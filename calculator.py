@@ -1,9 +1,8 @@
 from tkinter import *
+from tkinter import filedialog
 import pyperclip
 import json
 import csv
-import os
-os.chdir('C:\\Users\\baben\\Documents\\GitHub\\calculator')
 
 root = Tk()
 root.title('Calculator')
@@ -151,53 +150,47 @@ class Calculator():
         # add history area
         self.historyLabel = Label(self.window, text = '', bg = '#241e24', fg = '#f0ebf0')
         self.historyLog = Message(self.historyLabel, text = '', bg = '#241e24', fg = '#363336', font = ('Lucida Console',12,'bold'), width = 200)
-        self.historyLabel.place(y = 70, width = 323, height = 450)
+        self.historyLabel.place(y = 60, width = 323, height = 450)
         self.historyLog.place(x = 2)
         self.historyLog['text'] = ('\n\n'.join(i for i in self.history))
         self.historyBtn['bg'] = '#241e24'
         
-        # add button to close history area
+        # add close history button
         self.closeHistoryBtn = Button(self.window, text = 'x', bg = '#241e24', fg = '#f0ebf0', font = ('Lucida Console',14), command = lambda:self.closehistory())
         self.closeHistoryBtn.place(x = 277, y = 5, width = 35, height = 35)
         self.closeHistoryBtn['relief'] = 'flat'
         
-        # add button to copy history
+        # copy history
         self.copyHistoryBtn = Button(self.window, text = '📑\ncopy', bg = '#241e24', fg = '#f0ebf0', font = ('Lucida Console',12), command = lambda:self.copyhistory())
         self.copyHistoryBtn.place(x = 5, y = 5, width = 50, height = 50)
         self.copyHistoryBtn['relief'] = 'flat'
         
-        # add button to save history in .txt file
+        # save history to .txt file
         self.saveHistoryToTXTBtn = Button(self.window, text = '💾\ntxt', bg = '#241e24', fg = '#f0ebf0', font = ('Lucida Console',12), command = lambda:self.saveToTXT())
         self.saveHistoryToTXTBtn.place(x = 55, y = 5, width = 50, height = 50)
         self.saveHistoryToTXTBtn['relief'] = 'flat'
         
-        # add button to save history in .json file
+        # save history to .json file
         self.saveHistoryToJSONBtn = Button(self.window, text = '💾\njson', bg = '#241e24', fg = '#f0ebf0', font = ('Lucida Console',12), command = lambda:self.saveToJSON())
         self.saveHistoryToJSONBtn.place(x = 105, y = 5, width = 50, height = 50)
         self.saveHistoryToJSONBtn['relief'] = 'flat'
         
-        # add button to save history in .csv file
+        # save history to .csv file
         self.saveHistoryToCSVBtn = Button(self.window, text = '💾\ncsv', bg = '#241e24', fg = '#f0ebf0', font = ('Lucida Console',12), command = lambda:self.saveToCSV())
         self.saveHistoryToCSVBtn.place(x = 155, y = 5, width = 50, height = 50)
         self.saveHistoryToCSVBtn['relief'] = 'flat'
         
-        # add button to clean history
+        # clean history
         self.cleanHistoryBtn = Button(self.window, text = '🧽\nclean', bg = '#241e24', fg = '#f0ebf0', font = ('Lucida Console',12), command = lambda:self.cleanhistory())
         self.cleanHistoryBtn.place(x = 205, y = 5, width = 50, height = 50)
         self.cleanHistoryBtn['relief'] = 'flat'
         
         # remove history button
-        self.historyBtn.destroy()
-        
-        # clean display
-        self.str = ''
-        self.val.set(self.str)
-        self.log.set(self.str)
+        self.historyBtn.destroy()     
 
 
-   
+
     def closehistory(self):
-        # close history area and remove all buttons
         self.historyLabel.destroy()
         self.historyLog.destroy()
         self.closeHistoryBtn.destroy()
@@ -206,8 +199,6 @@ class Calculator():
         self.saveHistoryToCSVBtn.destroy()
         self.saveHistoryToTXTBtn.destroy()
         self.saveHistoryToJSONBtn.destroy()
-        
-        # add history button
         self.historyBtn = Button(self.window, text = '🕒', bg = '#241e24', fg = '#f0ebf0', font = ('Lucida Console',20), command = lambda:self.displayhistory())
         self.historyBtn.place(x = 5, y = 5, width = 35, height = 35)
         self.historyBtn['relief'] = 'flat'
@@ -226,7 +217,8 @@ class Calculator():
 
 
     def saveToCSV(self):
-        with open('calculator_log.csv', 'a', newline = '') as file:
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save .csv file", initialfile = 'calculator_log', filetypes = (("csv files","*.csv"),("all files","*.*")))
+        with open(f'{filename}.csv', 'a', newline = '') as file:
             writer = csv.writer(file)
             for i in self.history:
                 writer.writerow([i])
@@ -234,7 +226,8 @@ class Calculator():
 
 
     def saveToTXT(self):
-        with open('calculator_log.txt', 'a', newline = '') as file:
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save .txt file", initialfile = 'calculator_log', filetypes = (("txt files","*.txt"),("all files","*.*")))
+        with open(f'{filename}.txt', 'a', newline = '') as file:
             string = '\n'.join(str(i) for i in self.history)
             file.write(string)
 
@@ -248,19 +241,17 @@ class Calculator():
                     f'{i + 1}': self.history[i]
                 }
             )
-        
-        with open('calculator_log.json', 'a', encoding = 'utf-8') as file:
-            json.dump(list, file, indent = 4, ensure_ascii = False)      
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save .json file", initialfile = 'calculator_log', filetypes = (("json files","*.json"),("all files","*.*")))
+        with open(f'{filename}.json', 'a', encoding = 'utf-8') as file:
+            json.dump(list, file, indent = 4, ensure_ascii = False)
 
 
 
     def math(self, i):
         self.logVal += self.str
-        
-        self.res = eval(self.str)
+        self.res = round(eval(self.str), 5)
         self.val.set(str(self.res))
         self.str = (str(self.res))
-        
         self.logVal = f'{self.logVal}{i}{self.res}'
         self.history.insert(0, self.logVal)
         self.logVal = ''
