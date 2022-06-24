@@ -1,2 +1,3 @@
 # calculator
- python
+## Calculator.
+Python3, Tkinter.
