@@ -34,110 +34,110 @@ class Calculator():
         self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = '#1f1e24', fg = '#f757a4', font = ('Consolas',26,'bold'))
         self.displayAreaMessage.place(x = -5, y = -15)
 
-        self.btn = Label(self.window, text = '', bg = '#1f1e24')
-        self.btn.place(x = -4, y = 153, width = 323, height = 355)
+        self.button = Label(self.window, text = '', bg = '#1f1e24')
+        self.button.place(x = -4, y = 153, width = 323, height = 355)
 
-        self.historyBtn = Button(self.window, text = '🕒', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.displayHistory())
-        self.historyBtn.place(x = 5, y = 5, width = 50, height = 50)
-        self.historyBtn['relief'] = 'flat'
+        self.historyButton = Button(self.window, text = '🕒', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.displayHistory())
+        self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
+        self.historyButton['relief'] = 'flat'
 
 
-        btnMC = Button(self.btn, text = 'MC', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MC'))
-        btnMC.place(x = 5, y = -3, width = 49, height = 25)
-        btnMC['relief'] = 'flat'
-        btnMR = Button(self.btn, text = 'MR', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR'))
-        btnMR.place(x = 57, y = -3, width = 49, height = 25)
-        btnMR['relief'] = 'flat'
-        btnMRP = Button(self.btn, text = 'MR+', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR+'))
-        btnMRP.place(x = 109, y = -3, width = 49, height = 25)
-        btnMRP['relief'] = 'flat'
-        btnMRN = Button(self.btn, text = 'MR-', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR-'))
-        btnMRN.place(x = 162, y = -3, width = 49, height = 25)
-        btnMRN['relief'] = 'flat'
-        btnMS = Button(self.btn, text = 'MS', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MS'))
-        btnMS.place(x = 215, y = -3, width = 49, height = 25)
-        btnMS['relief'] = 'flat'
-        btnMM = Button(self.btn, text = 'M▼', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('M▼'))
-        btnMM.place(x = 266, y = -3, width = 49, height = 25)
-        btnMM['relief'] = 'flat'
+        button__MC = Button(self.button, text = 'MC', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MC'))
+        button__MC.place(x = 5, y = -3, width = 49, height = 25)
+        button__MC['relief'] = 'flat'
+        button__MR = Button(self.button, text = 'MR', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR'))
+        button__MR.place(x = 57, y = -3, width = 49, height = 25)
+        button__MR['relief'] = 'flat'
+        button__MRP = Button(self.button, text = 'MR+', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR+'))
+        button__MRP.place(x = 109, y = -3, width = 49, height = 25)
+        button__MRP['relief'] = 'flat'
+        button__MRN = Button(self.button, text = 'MR-', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR-'))
+        button__MRN.place(x = 162, y = -3, width = 49, height = 25)
+        button__MRN['relief'] = 'flat'
+        button__MS = Button(self.button, text = 'MS', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MS'))
+        button__MS.place(x = 215, y = -3, width = 49, height = 25)
+        button__MS['relief'] = 'flat'
+        button__MM = Button(self.button, text = 'M▼', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('M▼'))
+        button__MM.place(x = 266, y = -3, width = 49, height = 25)
+        button__MM['relief'] = 'flat'
 
-        btnC = Button(self.btn, text = '⌫', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.eraseLastChar())
-        btnC.place(x = 5, y = 28, width = 75.25, height = 50)
-        btnC['relief'] = 'flat'
-        btnPercent = Button(self.btn, text = '%', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getPercent())
-        btnPercent.place(x = 83.25, y = 28, width = 75.25, height = 50)
-        btnPercent['relief'] = 'flat'
-        btnFraction = Button(self.btn, text = '1/x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getFraction())
-        btnFraction.place(x = 161.5, y = 28, width = 75.25, height = 50)
-        btnFraction['relief'] = 'flat'
-        btnRemove = Button(self.btn, text = 'C', bg = '#363336', fg = '#f757a4', font = ('Consolas',18,'bold'), command = lambda:self.reset())
-        btnRemove.place(x = 239.75, y = 28, width = 75.25, height = 50)
-        btnRemove['relief'] = 'flat'
+        button__C = Button(self.button, text = '⌫', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.eraseLastChar())
+        button__C.place(x = 5, y = 28, width = 75.25, height = 50)
+        button__C['relief'] = 'flat'
+        button__Percent = Button(self.button, text = '%', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getPercent())
+        button__Percent.place(x = 83.25, y = 28, width = 75.25, height = 50)
+        button__Percent['relief'] = 'flat'
+        button__Fraction = Button(self.button, text = '1/x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getFraction())
+        button__Fraction.place(x = 161.5, y = 28, width = 75.25, height = 50)
+        button__Fraction['relief'] = 'flat'
+        button__Remove = Button(self.button, text = 'C', bg = '#363336', fg = '#f757a4', font = ('Consolas',18,'bold'), command = lambda:self.reset())
+        button__Remove.place(x = 239.75, y = 28, width = 75.25, height = 50)
+        button__Remove['relief'] = 'flat'
 
-        btnPointLeft = Button(self.btn, text = '<.', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointLeft())
-        btnPointLeft.place(x = 5, y = 81, width = 75.25, height = 50)
-        btnPointLeft['relief'] = 'flat'
-        btnSquare = Button(self.btn, text = 'x²', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquare())
-        btnSquare.place(x = 83.25, y = 81, width = 75.25, height = 50)
-        btnSquare['relief'] = 'flat'
-        btnSquareRoot = Button(self.btn, text = '√x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquareRoot())
-        btnSquareRoot.place(x = 161.5, y = 81, width = 75.25, height = 50)
-        btnSquareRoot['relief'] = 'flat'
-        btnDiv = Button(self.btn, text = '÷', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('/'))
-        btnDiv.place(x = 239.75, y = 81, width = 75.25, height = 50)
-        btnDiv['relief'] = 'flat'
+        button__PointLeft = Button(self.button, text = '<.', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointLeft())
+        button__PointLeft.place(x = 5, y = 81, width = 75.25, height = 50)
+        button__PointLeft['relief'] = 'flat'
+        button__Square = Button(self.button, text = 'x²', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquare())
+        button__Square.place(x = 83.25, y = 81, width = 75.25, height = 50)
+        button__Square['relief'] = 'flat'
+        button__SquareRoot = Button(self.button, text = '√x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquareRoot())
+        button__SquareRoot.place(x = 161.5, y = 81, width = 75.25, height = 50)
+        button__SquareRoot['relief'] = 'flat'
+        button__Division = Button(self.button, text = '÷', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('/'))
+        button__Division.place(x = 239.75, y = 81, width = 75.25, height = 50)
+        button__Division['relief'] = 'flat'
 
-        btn7 = Button(self.btn, text = '7', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(7))
-        btn7.place(x = 5, y = 134, width = 75.25, height = 50)
-        btn7['relief'] = 'flat'
-        btn8 = Button(self.btn, text = '8', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(8))
-        btn8.place(x = 83.25, y = 134, width = 75.25, height = 50)
-        btn8['relief'] = 'flat'
-        btn9 = Button(self.btn, text = '9', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(9))
-        btn9.place(x = 161.5, y = 134, width = 75.25, height = 50)
-        btn9['relief'] = 'flat'
-        btnMul = Button(self.btn, text = '❌', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',8), command = lambda:self.display('*'))
-        btnMul.place(x = 239.75, y = 134, width = 75.25, height = 50)
-        btnMul['relief'] = 'flat'
+        button__7 = Button(self.button, text = '7', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(7))
+        button__7.place(x = 5, y = 134, width = 75.25, height = 50)
+        button__7['relief'] = 'flat'
+        button__8 = Button(self.button, text = '8', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(8))
+        button__8.place(x = 83.25, y = 134, width = 75.25, height = 50)
+        button__8['relief'] = 'flat'
+        button__9 = Button(self.button, text = '9', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(9))
+        button__9.place(x = 161.5, y = 134, width = 75.25, height = 50)
+        button__9['relief'] = 'flat'
+        button__Multiplication = Button(self.button, text = '❌', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',8), command = lambda:self.display('*'))
+        button__Multiplication.place(x = 239.75, y = 134, width = 75.25, height = 50)
+        button__Multiplication['relief'] = 'flat'
 
-        btn4 = Button(self.btn, text = '4', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(4))
-        btn4.place(x = 5, y = 187, width = 75.25, height = 50)
-        btn4['relief'] = 'flat'
-        btn5 = Button(self.btn, text = '5', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(5))
-        btn5.place(x = 83.25, y = 187, width = 75.25, height = 50)
-        btn5['relief'] = 'flat'
-        btn6 = Button(self.btn, text = '6', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(6))
-        btn6.place(x = 161.5, y = 187, width = 75.25, height = 50)
-        btn6['relief'] = 'flat'
-        btnSub = Button(self.btn, text = '-', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('-'))
-        btnSub.place(x = 239.75, y = 187, width = 75.25, height = 50)
-        btnSub['relief'] = 'flat'
+        button__4 = Button(self.button, text = '4', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(4))
+        button__4.place(x = 5, y = 187, width = 75.25, height = 50)
+        button__4['relief'] = 'flat'
+        button__5 = Button(self.button, text = '5', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(5))
+        button__5.place(x = 83.25, y = 187, width = 75.25, height = 50)
+        button__5['relief'] = 'flat'
+        button__6 = Button(self.button, text = '6', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(6))
+        button__6.place(x = 161.5, y = 187, width = 75.25, height = 50)
+        button__6['relief'] = 'flat'
+        button__Substraction = Button(self.button, text = '-', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('-'))
+        button__Substraction.place(x = 239.75, y = 187, width = 75.25, height = 50)
+        button__Substraction['relief'] = 'flat'
 
-        btn1 = Button(self.btn, text = '1', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(1))
-        btn1.place(x = 5, y = 240, width = 75.25, height = 50)
-        btn1['relief'] = 'flat'
-        btn2 = Button(self.btn, text = '2', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(2))
-        btn2.place(x = 83.25, y = 240, width = 75.25, height = 50)
-        btn2['relief'] = 'flat'
-        btn3 = Button(self.btn, text = '3', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(3))
-        btn3.place(x = 161.5, y = 240, width = 75.25, height = 50)
-        btn3['relief'] = 'flat'
-        btnAdd = Button(self.btn, text = '+', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('+'))
-        btnAdd.place(x = 239.75, y = 240, width = 75.25, height = 50)
-        btnAdd['relief'] = 'flat'
+        button__1 = Button(self.button, text = '1', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(1))
+        button__1.place(x = 5, y = 240, width = 75.25, height = 50)
+        button__1['relief'] = 'flat'
+        button__2 = Button(self.button, text = '2', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(2))
+        button__2.place(x = 83.25, y = 240, width = 75.25, height = 50)
+        button__2['relief'] = 'flat'
+        button__3 = Button(self.button, text = '3', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(3))
+        button__3.place(x = 161.5, y = 240, width = 75.25, height = 50)
+        button__3['relief'] = 'flat'
+        button__Addition = Button(self.button, text = '+', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('+'))
+        button__Addition.place(x = 239.75, y = 240, width = 75.25, height = 50)
+        button__Addition['relief'] = 'flat'
 
-        btnPointRight = Button(self.btn, text = '.>', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointRight())
-        btnPointRight.place(x = 5, y = 293, width = 75.25, height = 50)
-        btnPointRight['relief'] = 'flat'
-        btn0 = Button(self.btn, text = '0', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(0))
-        btn0.place(x = 83.25, y = 293, width = 75.25, height = 50)
-        btn0['relief'] = 'flat'
-        btnPoint = Button(self.btn, text = '.', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('.'))
-        btnPoint.place(x = 161.5, y = 293, width = 75.25, height = 50)
-        btnPoint['relief'] = 'flat'
-        btnResult = Button(self.btn, text = '=', bg = '#f757a4', fg = '#473d47', font = ('Consolas',20,'bold'), command = lambda:self.math('='))
-        btnResult.place(x = 239.75, y = 293, width = 75.25, height = 50)
-        btnResult['relief'] = 'flat'
+        button__PointRight = Button(self.button, text = '.>', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointRight())
+        button__PointRight.place(x = 5, y = 293, width = 75.25, height = 50)
+        button__PointRight['relief'] = 'flat'
+        button__0 = Button(self.button, text = '0', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(0))
+        button__0.place(x = 83.25, y = 293, width = 75.25, height = 50)
+        button__0['relief'] = 'flat'
+        button__Point = Button(self.button, text = '.', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('.'))
+        button__Point.place(x = 161.5, y = 293, width = 75.25, height = 50)
+        button__Point['relief'] = 'flat'
+        button__Result = Button(self.button, text = '=', bg = '#f757a4', fg = '#473d47', font = ('Consolas',20,'bold'), command = lambda:self.math('='))
+        button__Result.place(x = 239.75, y = 293, width = 75.25, height = 50)
+        button__Result['relief'] = 'flat'
 
 
     def display(self, i):
@@ -156,54 +156,54 @@ class Calculator():
         self.historyLabel.place(y = 60, width = 323, height = 450)
         self.historyLog.place(x = 12, y = 0)
         self.historyLog['text'] = ('\n'.join(i for i in self.history))
-        self.historyBtn['bg'] = '#1f1e24'
+        self.historyButton['bg'] = '#1f1e24'
 
         # add close history button
-        self.closeHistoryBtn = Button(self.window, text = 'x', bg = '#1f1e24', fg = '#f757a4', font = ('Consolas',12), command = lambda:self.closeHistory())
-        self.closeHistoryBtn.place(x = 260, y = 5, width = 50, height = 50)
-        self.closeHistoryBtn['relief'] = 'flat'
+        self.button__closeHistory = Button(self.window, text = 'x', bg = '#1f1e24', fg = '#f757a4', font = ('Consolas',12), command = lambda:self.closeHistory())
+        self.button__closeHistory.place(x = 260, y = 5, width = 50, height = 50)
+        self.button__closeHistory['relief'] = 'flat'
 
         # copy history
-        self.copyHistoryBtn = Button(self.window, text = '📑\ncopy', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.copyHistory())
-        self.copyHistoryBtn.place(x = 5, y = 5, width = 50, height = 50)
-        self.copyHistoryBtn['relief'] = 'flat'
+        self.button__copyHistory = Button(self.window, text = '📑\ncopy', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.copyHistory())
+        self.button__copyHistory.place(x = 5, y = 5, width = 50, height = 50)
+        self.button__copyHistory['relief'] = 'flat'
 
         # save history to .txt file
-        self.saveHistoryToTXTBtn = Button(self.window, text = '💾\ntxt', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.saveToTXT())
-        self.saveHistoryToTXTBtn.place(x = 55, y = 5, width = 50, height = 50)
-        self.saveHistoryToTXTBtn['relief'] = 'flat'
+        self.button__saveToTXT = Button(self.window, text = '💾\ntxt', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.saveToTXT())
+        self.button__saveToTXT.place(x = 55, y = 5, width = 50, height = 50)
+        self.button__saveToTXT['relief'] = 'flat'
 
         # save history to .json file
-        self.saveHistoryToJSONBtn = Button(self.window, text = '💾\njson', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.saveToJSON())
-        self.saveHistoryToJSONBtn.place(x = 105, y = 5, width = 50, height = 50)
-        self.saveHistoryToJSONBtn['relief'] = 'flat'
+        self.button__saveToJSON = Button(self.window, text = '💾\njson', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.saveToJSON())
+        self.button__saveToJSON.place(x = 105, y = 5, width = 50, height = 50)
+        self.button__saveToJSON['relief'] = 'flat'
 
         # save history to .csv file
-        self.saveHistoryToCSVBtn = Button(self.window, text = '💾\ncsv', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.saveToCSV())
-        self.saveHistoryToCSVBtn.place(x = 155, y = 5, width = 50, height = 50)
-        self.saveHistoryToCSVBtn['relief'] = 'flat'
+        self.button__saveToCSV = Button(self.window, text = '💾\ncsv', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.saveToCSV())
+        self.button__saveToCSV.place(x = 155, y = 5, width = 50, height = 50)
+        self.button__saveToCSV['relief'] = 'flat'
 
         # clean history
-        self.cleanHistoryBtn = Button(self.window, text = '🧽\nclean', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.cleanHistory())
-        self.cleanHistoryBtn.place(x = 205, y = 5, width = 50, height = 50)
-        self.cleanHistoryBtn['relief'] = 'flat'
+        self.button__cleanHistory = Button(self.window, text = '🧽\nclean', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.cleanHistory())
+        self.button__cleanHistory.place(x = 205, y = 5, width = 50, height = 50)
+        self.button__cleanHistory['relief'] = 'flat'
 
         # remove history button
-        self.historyBtn.destroy()
+        self.historyButton.destroy()
 
 
     def closeHistory(self):
         self.historyLabel.destroy()
         self.historyLog.destroy()
-        self.closeHistoryBtn.destroy()
-        self.cleanHistoryBtn.destroy()
-        self.copyHistoryBtn.destroy()
-        self.saveHistoryToCSVBtn.destroy()
-        self.saveHistoryToTXTBtn.destroy()
-        self.saveHistoryToJSONBtn.destroy()
-        self.historyBtn = Button(self.window, text = '🕒', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.displayHistory())
-        self.historyBtn.place(x = 5, y = 5, width = 50, height = 50)
-        self.historyBtn['relief'] = 'flat'
+        self.button__closeHistory.destroy()
+        self.button__cleanHistory.destroy()
+        self.button__copyHistory.destroy()
+        self.button__saveToCSV.destroy()
+        self.button__saveToTXT.destroy()
+        self.button__saveToJSON.destroy()
+        self.historyButton = Button(self.window, text = '🕒', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.displayHistory())
+        self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
+        self.historyButton['relief'] = 'flat'
 
 
     def cleanHistory(self):
@@ -387,6 +387,7 @@ class Calculator():
                 output = f'{expression_result}{taken_operators[0]}{percent}'
                 self.str = output
                 self.val.set(self.str)
+
 
 calculator = Calculator().reset()
 root.mainloop()
