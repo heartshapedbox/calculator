@@ -10,8 +10,8 @@ root.title('Calculator')
 x = int(root.winfo_screenwidth() // 2)
 y = int(root.winfo_screenheight() * 0.2)
 root.geometry('320x505+' + str(x) + '+' + str(y))
+# root.attributes('-alpha', 0.95)
 root.resizable(False, False)
-
 
 class Calculator():
     def __init__(self):
@@ -25,25 +25,25 @@ class Calculator():
         self.window.place(width = 323, height = 508)
 
         self.logArea = Label(self.window, text = '', bg = '#1f1e24')
-        self.logArea.place(x = 5, y = 48, width = 297, height = 30)
-        self.logAreaMessage = Message(self.logArea, width = 305, textvariable = self.log, bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12))
-        self.logAreaMessage.place(y = 8)
+        self.logArea.place(x = 5, y = 55, width = 295, height = 45)
+        self.logAreaMessage = Message(self.logArea, width = 300, textvariable = self.log, bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12))
+        self.logAreaMessage.place(x = 7, y = 5)
 
         self.displayArea = Label(self.window, text = '', bg = '#1f1e24')
-        self.displayArea.place(y = 80, width = 307, height = 70)
+        self.displayArea.place(x = 5, y = 100, width = 295, height = 50)
         self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = '#1f1e24', fg = '#f757a4', font = ('Consolas',26,'bold'))
-        self.displayAreaMessage.place(x = -6, y = 8)
+        self.displayAreaMessage.place(x = -5, y = -15)
 
         self.btn = Label(self.window, text = '', bg = '#1f1e24')
         self.btn.place(x = -4, y = 153, width = 323, height = 355)
 
         self.historyBtn = Button(self.window, text = '🕒', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.displayHistory())
-        self.historyBtn.place(x = 5, y = 5, width = 35, height = 35)
+        self.historyBtn.place(x = 5, y = 5, width = 50, height = 50)
         self.historyBtn['relief'] = 'flat'
 
 
         btnMC = Button(self.btn, text = 'MC', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MC'))
-        btnMC.place(x = 2, y = -3, width = 49, height = 25)
+        btnMC.place(x = 5, y = -3, width = 49, height = 25)
         btnMC['relief'] = 'flat'
         btnMR = Button(self.btn, text = 'MR', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR'))
         btnMR.place(x = 57, y = -3, width = 49, height = 25)
@@ -55,34 +55,34 @@ class Calculator():
         btnMRN.place(x = 162, y = -3, width = 49, height = 25)
         btnMRN['relief'] = 'flat'
         btnMS = Button(self.btn, text = 'MS', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MS'))
-        btnMS.place(x = 212, y = -3, width = 49, height = 25)
+        btnMS.place(x = 215, y = -3, width = 49, height = 25)
         btnMS['relief'] = 'flat'
         btnMM = Button(self.btn, text = 'M▼', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('M▼'))
         btnMM.place(x = 266, y = -3, width = 49, height = 25)
         btnMM['relief'] = 'flat'
 
-        btnPercent = Button(self.btn, text = 'C', bg = '#363336', fg = '#f757a4', font = ('Consolas',16), command = lambda:self.reset())
-        btnPercent.place(x = 5, y = 28, width = 75.25, height = 50)
-        btnPercent['relief'] = 'flat'
-        btnCE = Button(self.btn, text = '%', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('%'))
-        btnCE.place(x = 83.25, y = 28, width = 75.25, height = 50)
-        btnCE['relief'] = 'flat'
-        btnC = Button(self.btn, text = '1/x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getFraction())
-        btnC.place(x = 161.5, y = 28, width = 75.25, height = 50)
+        btnC = Button(self.btn, text = '⌫', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.eraseLastChar())
+        btnC.place(x = 5, y = 28, width = 75.25, height = 50)
         btnC['relief'] = 'flat'
-        btnDel = Button(self.btn, text = '⌫', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.eraseLastChar())
-        btnDel.place(x = 239.75, y = 28, width = 75.25, height = 50)
-        btnDel['relief'] = 'flat'
+        btnPercent = Button(self.btn, text = '%', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getPercent())
+        btnPercent.place(x = 83.25, y = 28, width = 75.25, height = 50)
+        btnPercent['relief'] = 'flat'
+        btnFraction = Button(self.btn, text = '1/x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getFraction())
+        btnFraction.place(x = 161.5, y = 28, width = 75.25, height = 50)
+        btnFraction['relief'] = 'flat'
+        btnRemove = Button(self.btn, text = 'C', bg = '#363336', fg = '#f757a4', font = ('Consolas',18,'bold'), command = lambda:self.reset())
+        btnRemove.place(x = 239.75, y = 28, width = 75.25, height = 50)
+        btnRemove['relief'] = 'flat'
 
-        btnFr = Button(self.btn, text = '<.', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointLeft())
-        btnFr.place(x = 5, y = 81, width = 75.25, height = 50)
-        btnFr['relief'] = 'flat'
-        btnSq = Button(self.btn, text = 'x²', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquare())
-        btnSq.place(x = 83.25, y = 81, width = 75.25, height = 50)
-        btnSq['relief'] = 'flat'
-        btnSr = Button(self.btn, text = '√x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquareRoot())
-        btnSr.place(x = 161.5, y = 81, width = 75.25, height = 50)
-        btnSr['relief'] = 'flat'
+        btnPointLeft = Button(self.btn, text = '<.', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointLeft())
+        btnPointLeft.place(x = 5, y = 81, width = 75.25, height = 50)
+        btnPointLeft['relief'] = 'flat'
+        btnSquare = Button(self.btn, text = 'x²', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquare())
+        btnSquare.place(x = 83.25, y = 81, width = 75.25, height = 50)
+        btnSquare['relief'] = 'flat'
+        btnSquareRoot = Button(self.btn, text = '√x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquareRoot())
+        btnSquareRoot.place(x = 161.5, y = 81, width = 75.25, height = 50)
+        btnSquareRoot['relief'] = 'flat'
         btnDiv = Button(self.btn, text = '÷', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('/'))
         btnDiv.place(x = 239.75, y = 81, width = 75.25, height = 50)
         btnDiv['relief'] = 'flat'
@@ -126,16 +126,16 @@ class Calculator():
         btnAdd.place(x = 239.75, y = 240, width = 75.25, height = 50)
         btnAdd['relief'] = 'flat'
 
-        btnNeg = Button(self.btn, text = '.>', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointRight())
-        btnNeg.place(x = 5, y = 293, width = 75.25, height = 50)
-        btnNeg['relief'] = 'flat'
+        btnPointRight = Button(self.btn, text = '.>', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointRight())
+        btnPointRight.place(x = 5, y = 293, width = 75.25, height = 50)
+        btnPointRight['relief'] = 'flat'
         btn0 = Button(self.btn, text = '0', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(0))
         btn0.place(x = 83.25, y = 293, width = 75.25, height = 50)
         btn0['relief'] = 'flat'
-        btnSep = Button(self.btn, text = '.', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('.'))
-        btnSep.place(x = 161.5, y = 293, width = 75.25, height = 50)
-        btnSep['relief'] = 'flat'
-        btnResult = Button(self.btn, text = '=', bg = '#f757a4', fg = '#473d47', font = ('Consolas',20), command = lambda:self.math('='))
+        btnPoint = Button(self.btn, text = '.', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('.'))
+        btnPoint.place(x = 161.5, y = 293, width = 75.25, height = 50)
+        btnPoint['relief'] = 'flat'
+        btnResult = Button(self.btn, text = '=', bg = '#f757a4', fg = '#473d47', font = ('Consolas',20,'bold'), command = lambda:self.math('='))
         btnResult.place(x = 239.75, y = 293, width = 75.25, height = 50)
         btnResult['relief'] = 'flat'
 
@@ -146,7 +146,7 @@ class Calculator():
             self.val.set(self.str)
         else:
             self.reset()
-            
+
 
 
     def displayHistory(self):
@@ -154,13 +154,13 @@ class Calculator():
         self.historyLabel = Label(self.window, text = '', bg = '#1f1e24', fg = '#f0ebf0')
         self.historyLog = Message(self.historyLabel, text = '', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), width = 200)
         self.historyLabel.place(y = 60, width = 323, height = 450)
-        self.historyLog.place(x = 5, y = -4)
+        self.historyLog.place(x = 12, y = 0)
         self.historyLog['text'] = ('\n'.join(i for i in self.history))
         self.historyBtn['bg'] = '#1f1e24'
 
         # add close history button
-        self.closeHistoryBtn = Button(self.window, text = 'x', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.closeHistory())
-        self.closeHistoryBtn.place(x = 277, y = 5, width = 35, height = 35)
+        self.closeHistoryBtn = Button(self.window, text = 'x', bg = '#1f1e24', fg = '#f757a4', font = ('Consolas',12), command = lambda:self.closeHistory())
+        self.closeHistoryBtn.place(x = 260, y = 5, width = 50, height = 50)
         self.closeHistoryBtn['relief'] = 'flat'
 
         # copy history
@@ -202,7 +202,7 @@ class Calculator():
         self.saveHistoryToTXTBtn.destroy()
         self.saveHistoryToJSONBtn.destroy()
         self.historyBtn = Button(self.window, text = '🕒', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.displayHistory())
-        self.historyBtn.place(x = 5, y = 5, width = 35, height = 35)
+        self.historyBtn.place(x = 5, y = 5, width = 50, height = 50)
         self.historyBtn['relief'] = 'flat'
 
 
@@ -245,7 +245,7 @@ class Calculator():
 
     def math(self, i):
         self.logVal += self.str
-        self.res = round(eval(self.str), 5)
+        self.res = round(eval(self.str), 9)
         self.val.set(str(self.res))
         self.str = (str(self.res))
         self.logVal = f'{self.logVal} {i} {self.res}'
@@ -268,43 +268,43 @@ class Calculator():
         if len(self.str) == 0:
             self.val.set('0')
             self.log.set('0')
-    
-    
+
+
     def movePointRight(self):
         if self.val.get() != '0':
             try:
-                moveRight = round(int(self.val.get()) * 10, 4)
+                moveRight = round(int(self.val.get()) * 10, 9)
                 self.str = (str(moveRight))
                 self.val.set(self.str)
             except ValueError:
                 try:
-                    moveRight = round(float(self.val.get()) * 10, 4)
+                    moveRight = round(float(self.val.get()) * 10, 9)
                     self.str = (str(moveRight))
                     self.val.set(self.str)
                 except ValueError:
                     pass
-    
-    
+
+
     def movePointLeft(self):
         if self.val.get() != '0':
             try:
-                moveLeft = round(int(self.val.get()) / 10, 4)
+                moveLeft = round(int(self.val.get()) / 10, 9)
                 self.str = (str(moveLeft))
                 self.val.set(self.str)
             except ValueError:
                 try:
-                    moveLeft = round(float(self.val.get()) / 10, 4)
+                    moveLeft = round(float(self.val.get()) / 10, 9)
                     self.str = (str(moveLeft))
                     self.val.set(self.str)
                 except ValueError:
                     pass
 
-    
+
     def getSquareRoot(self):
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                squareRoot = round(math.sqrt(int(self.val.get())), 4)
+                squareRoot = round(math.sqrt(int(self.val.get())), 9)
                 self.str = (str(squareRoot))
                 self.val.set(self.str)
                 self.logVal = f'√({self.logVal}) = {self.str}'
@@ -313,7 +313,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    squareRoot = round(math.sqrt(float(self.val.get())), 4)
+                    squareRoot = round(math.sqrt(float(self.val.get())), 9)
                     self.str = (str(squareRoot))
                     self.val.set(self.str)
                     self.logVal = f'√({self.logVal}) = {self.str}'
@@ -322,13 +322,13 @@ class Calculator():
                     self.log.set(self.history[0])
                 except ValueError:
                     pass
-    
-    
+
+
     def getSquare(self):
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                square = round(math.pow(int(self.val.get()),2), 4)
+                square = round(math.pow(int(self.val.get()),2), 9)
                 self.str = (str(square))
                 self.val.set(self.str)
                 self.logVal = f'sqr({self.logVal}) = {self.str}'
@@ -337,7 +337,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    square = round(math.pow(float(self.val.get()),2), 4)
+                    square = round(math.pow(float(self.val.get()),2), 9)
                     self.str = (str(square))
                     self.val.set(self.str)
                     self.logVal = f'sqr({self.logVal}) = {self.str}'
@@ -346,13 +346,13 @@ class Calculator():
                     self.log.set(self.history[0])
                 except ValueError:
                     pass
-    
-    
+
+
     def getFraction(self):
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                fraction = round(1 / int(self.val.get()), 4)
+                fraction = round(1 / int(self.val.get()), 9)
                 self.str = (str(fraction))
                 self.val.set(self.str)
                 self.logVal = f'1/({self.logVal}) = {self.str}'
@@ -361,7 +361,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    fraction = round(1 / float(self.val.get()), 4)
+                    fraction = round(1 / float(self.val.get()), 9)
                     self.str = (str(fraction))
                     self.val.set(self.str)
                     self.logVal = f'1/({self.logVal}) = {self.str}'
@@ -370,8 +370,23 @@ class Calculator():
                     self.log.set(self.history[0])
                 except ValueError:
                     pass
-        
 
+
+    def getPercent(self):
+        input = self.val.get()
+        operators_list = ['+','-','*','/']
+        taken_operators = []
+        output, expression_result, percent = '', '', ''
+        for i in range(len(input), 1, -1):
+            if input[i - 1] in operators_list:
+                taken_operators.append(input[i - 1])
+                expression = input.split(taken_operators[0])[0]
+                multiplier = input.split(taken_operators[0])[-1]
+                expression_result = round(eval(expression), 9)
+                percent = int(expression_result) * int(multiplier) / 100
+                output = f'{expression_result}{taken_operators[0]}{percent}'
+                self.str = output
+                self.val.set(self.str)
 
 calculator = Calculator().reset()
 root.mainloop()
