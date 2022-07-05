@@ -30,9 +30,9 @@ class Calculator():
         self.logAreaMessage.place(x = 7, y = 5)
 
         self.displayArea = Label(self.window, text = '', bg = '#1f1e24')
-        self.displayArea.place(x = 5, y = 100, width = 295, height = 50)
-        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = '#1f1e24', fg = '#f757a4', font = ('Consolas',26,'bold'))
-        self.displayAreaMessage.place(x = -5, y = -15)
+        self.displayArea.place(x = 5, y = 100, width = 300, height = 50)
+        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = '#1f1e24', fg = '#f757a4', font = ('Consolas',22,'bold'))
+        self.displayAreaMessage.place(x = -1, y = -5)
 
         self.button = Label(self.window, text = '', bg = '#1f1e24')
         self.button.place(x = -4, y = 153, width = 323, height = 355)
@@ -42,22 +42,22 @@ class Calculator():
         self.historyButton['relief'] = 'flat'
 
 
-        button__MC = Button(self.button, text = 'MC', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MC'))
+        button__MC = Button(self.button, text = 'MC', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do('MC'))
         button__MC.place(x = 5, y = -3, width = 49, height = 25)
         button__MC['relief'] = 'flat'
-        button__MR = Button(self.button, text = 'MR', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR'))
+        button__MR = Button(self.button, text = 'MR', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do('MR'))
         button__MR.place(x = 57, y = -3, width = 49, height = 25)
         button__MR['relief'] = 'flat'
-        button__MRP = Button(self.button, text = 'MR+', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR+'))
+        button__MRP = Button(self.button, text = 'MR+', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do('MR+'))
         button__MRP.place(x = 109, y = -3, width = 49, height = 25)
         button__MRP['relief'] = 'flat'
-        button__MRN = Button(self.button, text = 'MR-', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MR-'))
+        button__MRN = Button(self.button, text = 'MR-', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do('MR-'))
         button__MRN.place(x = 162, y = -3, width = 49, height = 25)
         button__MRN['relief'] = 'flat'
-        button__MS = Button(self.button, text = 'MS', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('MS'))
+        button__MS = Button(self.button, text = 'MS', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do('MS'))
         button__MS.place(x = 215, y = -3, width = 49, height = 25)
         button__MS['relief'] = 'flat'
-        button__MM = Button(self.button, text = 'M▼', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('M▼'))
+        button__MM = Button(self.button, text = 'M▼', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do('M▼'))
         button__MM.place(x = 266, y = -3, width = 49, height = 25)
         button__MM['relief'] = 'flat'
 
@@ -83,70 +83,75 @@ class Calculator():
         button__SquareRoot = Button(self.button, text = '√x', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.getSquareRoot())
         button__SquareRoot.place(x = 161.5, y = 81, width = 75.25, height = 50)
         button__SquareRoot['relief'] = 'flat'
-        button__Division = Button(self.button, text = '÷', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('/'))
+        button__Division = Button(self.button, text = '÷', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.do('/'))
         button__Division.place(x = 239.75, y = 81, width = 75.25, height = 50)
         button__Division['relief'] = 'flat'
 
-        button__7 = Button(self.button, text = '7', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(7))
+        button__7 = Button(self.button, text = '7', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(7))
         button__7.place(x = 5, y = 134, width = 75.25, height = 50)
         button__7['relief'] = 'flat'
-        button__8 = Button(self.button, text = '8', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(8))
+        button__8 = Button(self.button, text = '8', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(8))
         button__8.place(x = 83.25, y = 134, width = 75.25, height = 50)
         button__8['relief'] = 'flat'
-        button__9 = Button(self.button, text = '9', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(9))
+        button__9 = Button(self.button, text = '9', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(9))
         button__9.place(x = 161.5, y = 134, width = 75.25, height = 50)
         button__9['relief'] = 'flat'
-        button__Multiplication = Button(self.button, text = '❌', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',8), command = lambda:self.display('*'))
+        button__Multiplication = Button(self.button, text = '❌', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',8), command = lambda:self.do('*'))
         button__Multiplication.place(x = 239.75, y = 134, width = 75.25, height = 50)
         button__Multiplication['relief'] = 'flat'
 
-        button__4 = Button(self.button, text = '4', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(4))
+        button__4 = Button(self.button, text = '4', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(4))
         button__4.place(x = 5, y = 187, width = 75.25, height = 50)
         button__4['relief'] = 'flat'
-        button__5 = Button(self.button, text = '5', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(5))
+        button__5 = Button(self.button, text = '5', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(5))
         button__5.place(x = 83.25, y = 187, width = 75.25, height = 50)
         button__5['relief'] = 'flat'
-        button__6 = Button(self.button, text = '6', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(6))
+        button__6 = Button(self.button, text = '6', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(6))
         button__6.place(x = 161.5, y = 187, width = 75.25, height = 50)
         button__6['relief'] = 'flat'
-        button__Substraction = Button(self.button, text = '-', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('-'))
+        button__Substraction = Button(self.button, text = '-', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.do('-'))
         button__Substraction.place(x = 239.75, y = 187, width = 75.25, height = 50)
         button__Substraction['relief'] = 'flat'
 
-        button__1 = Button(self.button, text = '1', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(1))
+        button__1 = Button(self.button, text = '1', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(1))
         button__1.place(x = 5, y = 240, width = 75.25, height = 50)
         button__1['relief'] = 'flat'
-        button__2 = Button(self.button, text = '2', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(2))
+        button__2 = Button(self.button, text = '2', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(2))
         button__2.place(x = 83.25, y = 240, width = 75.25, height = 50)
         button__2['relief'] = 'flat'
-        button__3 = Button(self.button, text = '3', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(3))
+        button__3 = Button(self.button, text = '3', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(3))
         button__3.place(x = 161.5, y = 240, width = 75.25, height = 50)
         button__3['relief'] = 'flat'
-        button__Addition = Button(self.button, text = '+', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.display('+'))
+        button__Addition = Button(self.button, text = '+', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',20), command = lambda:self.do('+'))
         button__Addition.place(x = 239.75, y = 240, width = 75.25, height = 50)
         button__Addition['relief'] = 'flat'
 
         button__PointRight = Button(self.button, text = '.>', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.movePointRight())
         button__PointRight.place(x = 5, y = 293, width = 75.25, height = 50)
         button__PointRight['relief'] = 'flat'
-        button__0 = Button(self.button, text = '0', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display(0))
+        button__0 = Button(self.button, text = '0', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do(0))
         button__0.place(x = 83.25, y = 293, width = 75.25, height = 50)
         button__0['relief'] = 'flat'
-        button__Point = Button(self.button, text = '.', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.display('.'))
+        button__Point = Button(self.button, text = '.', bg = '#473d47', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.do('.'))
         button__Point.place(x = 161.5, y = 293, width = 75.25, height = 50)
         button__Point['relief'] = 'flat'
         button__Result = Button(self.button, text = '=', bg = '#f757a4', fg = '#473d47', font = ('Consolas',20,'bold'), command = lambda:self.math('='))
         button__Result.place(x = 239.75, y = 293, width = 75.25, height = 50)
         button__Result['relief'] = 'flat'
-
-
-    def display(self, i):
-        if len(self.str) < 13 and self.str != "00":
-            self.str += str(i)
-            self.val.set(self.str)
+    
+    
+    def do(self,i):
+        if self.str == '0' and i == 0:
+            self.reset()
+        elif len(self.str) < 17:
+            self.display(i)
         else:
             self.reset()
+            
 
+    def display(self, i):
+            self.str += str(i)
+            self.val.set(self.str)
 
 
     def displayHistory(self):
@@ -216,7 +221,7 @@ class Calculator():
 
 
     def saveToCSV(self):
-        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calculator_log', filetypes = (("csv files","*.csv"),("all files","*.*")))
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calcuConsolasr_log', filetypes = (("csv files","*.csv"),("all files","*.*")))
         with open(f'{filename}.csv', 'w', newline = '') as file:
             writer = csv.writer(file)
             for i in self.history:
@@ -224,7 +229,7 @@ class Calculator():
 
 
     def saveToTXT(self):
-        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calculator_log', filetypes = (("txt files","*.txt"),("all files","*.*")))
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calcuConsolasr_log', filetypes = (("txt files","*.txt"),("all files","*.*")))
         with open(f'{filename}.txt', 'w', newline = '') as file:
             string = '\n'.join(str(i) for i in self.history)
             file.write(string)
@@ -238,14 +243,14 @@ class Calculator():
                     f'{i + 1}': self.history[i]
                 }
             )
-        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calculator_log', filetypes = (("json files","*.json"),("all files","*.*")))
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calcuConsolasr_log', filetypes = (("json files","*.json"),("all files","*.*")))
         with open(f'{filename}.json', 'w', encoding = 'utf-8') as file:
             json.dump(list, file, indent = 4, ensure_ascii = False)
 
 
     def math(self, i):
         self.logVal += self.str
-        self.res = round(eval(self.str), 9)
+        self.res = round(eval(self.str), 15)
         self.val.set(str(self.res))
         self.str = (str(self.res))
         self.logVal = f'{self.logVal} {i} {self.res}'
@@ -273,12 +278,12 @@ class Calculator():
     def movePointRight(self):
         if self.val.get() != '0':
             try:
-                moveRight = round(int(self.val.get()) * 10, 9)
+                moveRight = round(int(self.val.get()) * 10, 15)
                 self.str = (str(moveRight))
                 self.val.set(self.str)
             except ValueError:
                 try:
-                    moveRight = round(float(self.val.get()) * 10, 9)
+                    moveRight = round(float(self.val.get()) * 10, 15)
                     self.str = (str(moveRight))
                     self.val.set(self.str)
                 except ValueError:
@@ -288,12 +293,12 @@ class Calculator():
     def movePointLeft(self):
         if self.val.get() != '0':
             try:
-                moveLeft = round(int(self.val.get()) / 10, 9)
+                moveLeft = round(int(self.val.get()) / 10, 15)
                 self.str = (str(moveLeft))
                 self.val.set(self.str)
             except ValueError:
                 try:
-                    moveLeft = round(float(self.val.get()) / 10, 9)
+                    moveLeft = round(float(self.val.get()) / 10, 15)
                     self.str = (str(moveLeft))
                     self.val.set(self.str)
                 except ValueError:
@@ -304,7 +309,7 @@ class Calculator():
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                squareRoot = round(math.sqrt(int(self.val.get())), 9)
+                squareRoot = round(math.sqrt(int(self.val.get())), 15)
                 self.str = (str(squareRoot))
                 self.val.set(self.str)
                 self.logVal = f'√({self.logVal}) = {self.str}'
@@ -313,7 +318,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    squareRoot = round(math.sqrt(float(self.val.get())), 9)
+                    squareRoot = round(math.sqrt(float(self.val.get())), 15)
                     self.str = (str(squareRoot))
                     self.val.set(self.str)
                     self.logVal = f'√({self.logVal}) = {self.str}'
@@ -328,7 +333,7 @@ class Calculator():
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                square = round(math.pow(int(self.val.get()),2), 9)
+                square = round(math.pow(int(self.val.get()),2), 15)
                 self.str = (str(square))
                 self.val.set(self.str)
                 self.logVal = f'sqr({self.logVal}) = {self.str}'
@@ -337,7 +342,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    square = round(math.pow(float(self.val.get()),2), 9)
+                    square = round(math.pow(float(self.val.get()),2), 15)
                     self.str = (str(square))
                     self.val.set(self.str)
                     self.logVal = f'sqr({self.logVal}) = {self.str}'
@@ -352,7 +357,7 @@ class Calculator():
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                fraction = round(1 / int(self.val.get()), 9)
+                fraction = round(1 / int(self.val.get()), 15)
                 self.str = (str(fraction))
                 self.val.set(self.str)
                 self.logVal = f'1/({self.logVal}) = {self.str}'
@@ -361,7 +366,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    fraction = round(1 / float(self.val.get()), 9)
+                    fraction = round(1 / float(self.val.get()), 15)
                     self.str = (str(fraction))
                     self.val.set(self.str)
                     self.logVal = f'1/({self.logVal}) = {self.str}'
@@ -382,7 +387,7 @@ class Calculator():
                 taken_operators.append(input[i - 1])
                 expression = input.split(taken_operators[0])[0]
                 multiplier = input.split(taken_operators[0])[-1]
-                expression_result = round(eval(expression), 9)
+                expression_result = round(eval(expression), 15)
                 percent = int(expression_result) * int(multiplier) / 100
                 output = f'{expression_result}{taken_operators[0]}{percent}'
                 self.str = output
