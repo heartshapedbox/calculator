@@ -143,7 +143,7 @@ class Calculator():
     def do(self,i):
         if self.str == '0' and i == 0:
             self.reset()
-        elif len(self.str) < 17:
+        elif len(self.str) < 16:
             self.display(i)
         else:
             self.reset()
@@ -250,7 +250,7 @@ class Calculator():
 
     def math(self, i):
         self.logVal += self.str
-        self.res = round(eval(self.str), 15)
+        self.res = round(eval(self.str), 5)
         self.val.set(str(self.res))
         self.str = (str(self.res))
         self.logVal = f'{self.logVal} {i} {self.res}'
@@ -276,40 +276,44 @@ class Calculator():
 
 
     def movePointRight(self):
-        if self.val.get() != '0':
+        if self.val.get() != '0' and len(self.str) < 16:
             try:
-                moveRight = round(int(self.val.get()) * 10, 15)
+                moveRight = round(int(self.val.get()) * 10, 10)
                 self.str = (str(moveRight))
                 self.val.set(self.str)
             except ValueError:
                 try:
-                    moveRight = round(float(self.val.get()) * 10, 15)
+                    moveRight = round(float(self.val.get()) * 10, 10)
                     self.str = (str(moveRight))
                     self.val.set(self.str)
                 except ValueError:
-                    pass
+                    self.reset()
+        else:
+            self.reset()
 
 
     def movePointLeft(self):
-        if self.val.get() != '0':
+        if self.val.get() != '0' and len(self.str) < 16:
             try:
-                moveLeft = round(int(self.val.get()) / 10, 15)
+                moveLeft = round(int(self.val.get()) / 10, 10)
                 self.str = (str(moveLeft))
                 self.val.set(self.str)
             except ValueError:
                 try:
-                    moveLeft = round(float(self.val.get()) / 10, 15)
+                    moveLeft = round(float(self.val.get()) / 10, 10)
                     self.str = (str(moveLeft))
                     self.val.set(self.str)
                 except ValueError:
-                    pass
+                    self.reset()
+        else:
+            self.reset()
 
 
     def getSquareRoot(self):
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                squareRoot = round(math.sqrt(int(self.val.get())), 15)
+                squareRoot = round(math.sqrt(int(self.val.get())), 5)
                 self.str = (str(squareRoot))
                 self.val.set(self.str)
                 self.logVal = f'√({self.logVal}) = {self.str}'
@@ -318,7 +322,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    squareRoot = round(math.sqrt(float(self.val.get())), 15)
+                    squareRoot = round(math.sqrt(float(self.val.get())), 5)
                     self.str = (str(squareRoot))
                     self.val.set(self.str)
                     self.logVal = f'√({self.logVal}) = {self.str}'
@@ -333,7 +337,7 @@ class Calculator():
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                square = round(math.pow(int(self.val.get()),2), 15)
+                square = round(math.pow(int(self.val.get()),2), 5)
                 self.str = (str(square))
                 self.val.set(self.str)
                 self.logVal = f'sqr({self.logVal}) = {self.str}'
@@ -342,7 +346,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    square = round(math.pow(float(self.val.get()),2), 15)
+                    square = round(math.pow(float(self.val.get()),2), 5)
                     self.str = (str(square))
                     self.val.set(self.str)
                     self.logVal = f'sqr({self.logVal}) = {self.str}'
@@ -357,7 +361,7 @@ class Calculator():
         if self.val.get() != '0':
             try:
                 self.logVal += self.str
-                fraction = round(1 / int(self.val.get()), 15)
+                fraction = round(1 / int(self.val.get()), 5)
                 self.str = (str(fraction))
                 self.val.set(self.str)
                 self.logVal = f'1/({self.logVal}) = {self.str}'
@@ -366,7 +370,7 @@ class Calculator():
                 self.log.set(self.history[0])
             except ValueError:
                 try:
-                    fraction = round(1 / float(self.val.get()), 15)
+                    fraction = round(1 / float(self.val.get()), 5)
                     self.str = (str(fraction))
                     self.val.set(self.str)
                     self.logVal = f'1/({self.logVal}) = {self.str}'
@@ -387,7 +391,7 @@ class Calculator():
                 taken_operators.append(input[i - 1])
                 expression = input.split(taken_operators[0])[0]
                 multiplier = input.split(taken_operators[0])[-1]
-                expression_result = round(eval(expression), 15)
+                expression_result = round(eval(expression), 5)
                 percent = int(expression_result) * int(multiplier) / 100
                 output = f'{expression_result}{taken_operators[0]}{percent}'
                 self.str = output
