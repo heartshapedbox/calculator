@@ -222,7 +222,7 @@ class Calculator():
 
 
     def saveToCSV(self):
-        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calcuConsolasr_log', filetypes = (("csv files","*.csv"),("all files","*.*")))
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calculator_log', filetypes = (("csv files","*.csv"),("all files","*.*")))
         with open(f'{filename}.csv', 'w', newline = '') as file:
             writer = csv.writer(file)
             for i in self.history:
@@ -230,7 +230,7 @@ class Calculator():
 
 
     def saveToTXT(self):
-        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calcuConsolasr_log', filetypes = (("txt files","*.txt"),("all files","*.*")))
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calculator_log', filetypes = (("txt files","*.txt"),("all files","*.*")))
         with open(f'{filename}.txt', 'w', newline = '') as file:
             string = '\n'.join(str(i) for i in self.history)
             file.write(string)
@@ -244,7 +244,7 @@ class Calculator():
                     f'{i + 1}': self.history[i]
                 }
             )
-        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calcuConsolasr_log', filetypes = (("json files","*.json"),("all files","*.*")))
+        filename =  filedialog.asksaveasfilename(initialdir = "/", title = "Save as", initialfile = 'calculator_log', filetypes = (("json files","*.json"),("all files","*.*")))
         with open(f'{filename}.json', 'w', encoding = 'utf-8') as file:
             json.dump(list, file, indent = 4, ensure_ascii = False)
 
