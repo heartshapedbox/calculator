@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import filedialog
-from decimal import Decimal
 import pyperclip
 import json
 import csv
