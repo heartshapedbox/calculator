@@ -42,24 +42,24 @@ class Calculator():
         self.historyButton['relief'] = 'flat'
 
 
-        button__MC = Button(self.button, text = 'MC', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MC'))
-        button__MC.place(x = 5, y = -3, width = 49, height = 25)
-        button__MC['relief'] = 'flat'
-        button__MR = Button(self.button, text = 'MR', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MR'))
-        button__MR.place(x = 57, y = -3, width = 49, height = 25)
-        button__MR['relief'] = 'flat'
-        button__MRP = Button(self.button, text = 'MR+', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MR+'))
-        button__MRP.place(x = 109, y = -3, width = 49, height = 25)
-        button__MRP['relief'] = 'flat'
-        button__MRN = Button(self.button, text = 'MR-', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MR-'))
-        button__MRN.place(x = 162, y = -3, width = 49, height = 25)
-        button__MRN['relief'] = 'flat'
-        button__MS = Button(self.button, text = 'MS', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MS'))
-        button__MS.place(x = 215, y = -3, width = 49, height = 25)
-        button__MS['relief'] = 'flat'
-        button__MM = Button(self.button, text = 'M▼', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('M▼'))
-        button__MM.place(x = 266, y = -3, width = 49, height = 25)
-        button__MM['relief'] = 'flat'
+        # button__MC = Button(self.button, text = 'MC', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MC'))
+        # button__MC.place(x = 5, y = -3, width = 49, height = 25)
+        # button__MC['relief'] = 'flat'
+        # button__MR = Button(self.button, text = 'MR', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MR'))
+        # button__MR.place(x = 57, y = -3, width = 49, height = 25)
+        # button__MR['relief'] = 'flat'
+        # button__MRP = Button(self.button, text = 'MR+', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MR+'))
+        # button__MRP.place(x = 109, y = -3, width = 49, height = 25)
+        # button__MRP['relief'] = 'flat'
+        # button__MRN = Button(self.button, text = 'MR-', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MR-'))
+        # button__MRN.place(x = 162, y = -3, width = 49, height = 25)
+        # button__MRN['relief'] = 'flat'
+        # button__MS = Button(self.button, text = 'MS', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('MS'))
+        # button__MS.place(x = 215, y = -3, width = 49, height = 25)
+        # button__MS['relief'] = 'flat'
+        # button__MM = Button(self.button, text = 'M▼', bg = '#1f1e24', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.accept('M▼'))
+        # button__MM.place(x = 266, y = -3, width = 49, height = 25)
+        # button__MM['relief'] = 'flat'
 
         button__C = Button(self.button, text = '⌫', bg = '#363336', fg = '#f0ebf0', font = ('Consolas',12), command = lambda:self.eraseLastChar())
         button__C.place(x = 5, y = 28, width = 75.25, height = 50)
