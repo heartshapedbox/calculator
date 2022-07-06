@@ -400,6 +400,7 @@ class Calculator():
                 self.str = output
                 self.val.set(self.str)
 
+if __name__ == '__main__':
+    calculator = Calculator().reset()
 
-calculator = Calculator().reset()
 root.mainloop()
