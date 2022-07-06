@@ -262,6 +262,7 @@ class Calculator():
             self.reset()
             self.logVal = ''
 
+
     def reset(self):
         self.str = ''
         self.val.set('0')
