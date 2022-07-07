@@ -7,7 +7,7 @@
 # calculator
 ## Calculator
 
-calculator.py, calculator.exe
+calculator (.py / .exe)
 
 Stack:
 Python, Tkinter.
