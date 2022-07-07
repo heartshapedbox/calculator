@@ -5,7 +5,9 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/heartshapedbox/calculator?color=FF4500)
 
 # calculator
-## Calculator.
+## Calculator
+
+calculator.py, calculator.exe
 
 Stack:
 Python, Tkinter.
