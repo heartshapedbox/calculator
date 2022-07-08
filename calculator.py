@@ -4,6 +4,8 @@ import pyperclip
 import json
 import csv
 import math
+import os
+os.chdir('C:\\Users\\baben\\Documents\\GitHub\\calculator\\')
 
 root = Tk()
 root.title('Calculator')
@@ -13,6 +15,8 @@ x, y = str(x), str(y)
 root.geometry(f'320x505+{x}+{y}')
 # root.attributes('-alpha', 0.95)
 root.resizable(False, False)
+root.iconbitmap('logo.ico')
+
 
 class Calculator():
     def __init__(self):
