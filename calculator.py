@@ -15,7 +15,7 @@ x, y = str(x), str(y)
 root.geometry(f'320x505+{x}+{y}')
 # root.attributes('-alpha', 0.95)
 root.resizable(False, False)
-root.iconbitmap('logo.ico')
+root.iconbitmap('assets\\logo.ico')
 
 
 class Calculator():
