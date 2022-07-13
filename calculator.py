@@ -46,7 +46,7 @@ class Calculator():
 
         self.displayArea = Label(self.window, text = '', bg = self.background)
         self.displayArea.place(x = 5, y = 100, width = 300, height = 50)
-        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = self.background, fg = foreground2, font = ('Consolas',22,'bold'))
+        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = self.background, fg = self.foreground2, font = ('Consolas', 22,'bold'))
         self.displayAreaMessage.place(x = -1, y = -5)
 
         self.button = Label(self.window, text = '', bg = self.background)
