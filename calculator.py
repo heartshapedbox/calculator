@@ -1,13 +1,18 @@
 from tkinter import *
 from tkinter import filedialog
+from tktooltip import ToolTip
+import customtkinter
 import pyperclip
 import json
 import csv
 import math
 import os
 os.chdir('C:\\Users\\baben\\Documents\\GitHub\\calculator\\')
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme('dark-blue')
 
-root = Tk()
+
+root = customtkinter.CTk()
 root.title('Calculator')
 x = int(root.winfo_screenwidth() // 2)
 y = int(root.winfo_screenheight() * 0.2)
@@ -52,168 +57,165 @@ class Calculator():
         self.button = Label(self.window, text = '', bg = self.background)
         self.button.place(x = -4, y = 153, width = 323, height = 355)
 
-        self.historyButton = Button(self.window, text = '🕒', command = lambda:self.displayHistory())
-        self.historyButton.configure(
-            background = self.background,
-            foreground = self.foreground,
-            font = ('Consolas', 20),
-            relief = 'flat',
-            activebackground = self.buttonactivebackground,
-            activeforeground = self.foreground
-        )
-        self.hover(self.historyButton, self.buttonactivebackground, self.background, self.foreground, self.foreground)
-        self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
-        
-
-
-        # button__MC = Button(self.button, text = 'MC', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MC'))
-        # button__MC.place(x = 5, y = -3, width = 49, height = 25)
-        # button__MC['relief'] = 'flat'
-        # button__MR = Button(self.button, text = 'MR', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR'))
-        # button__MR.place(x = 57, y = -3, width = 49, height = 25)
-        # button__MR['relief'] = 'flat'
-        # button__MRP = Button(self.button, text = 'MR+', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR+'))
-        # button__MRP.place(x = 109, y = -3, width = 49, height = 25)
-        # button__MRP['relief'] = 'flat'
-        # button__MRN = Button(self.button, text = 'MR-', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR-'))
-        # button__MRN.place(x = 162, y = -3, width = 49, height = 25)
-        # button__MRN['relief'] = 'flat'
-        # button__MS = Button(self.button, text = 'MS', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MS'))
-        # button__MS.place(x = 215, y = -3, width = 49, height = 25)
-        # button__MS['relief'] = 'flat'
-        # button__MM = Button(self.button, text = 'M▼', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('M▼'))
-        # button__MM.place(x = 266, y = -3, width = 49, height = 25)
-        # button__MM['relief'] = 'flat'
+        # button_MC = Button(self.button, text = 'MC', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MC'))
+        # button_MC.place(x = 5, y = -3, width = 49, height = 25)
+        # button_MC['relief'] = 'flat'
+        # button_MR = Button(self.button, text = 'MR', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR'))
+        # button_MR.place(x = 57, y = -3, width = 49, height = 25)
+        # button_MR['relief'] = 'flat'
+        # button_MRP = Button(self.button, text = 'MR+', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR+'))
+        # button_MRP.place(x = 109, y = -3, width = 49, height = 25)
+        # button_MRP['relief'] = 'flat'
+        # button_MRN = Button(self.button, text = 'MR-', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR-'))
+        # button_MRN.place(x = 162, y = -3, width = 49, height = 25)
+        # button_MRN['relief'] = 'flat'
+        # button_MS = Button(self.button, text = 'MS', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MS'))
+        # button_MS.place(x = 215, y = -3, width = 49, height = 25)
+        # button_MS['relief'] = 'flat'
+        # button_MM = Button(self.button, text = 'M▼', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('M▼'))
+        # button_MM.place(x = 266, y = -3, width = 49, height = 25)
+        # button_MM['relief'] = 'flat'
             
-        self.button__C = Button(self.button, text = '⌫', command = lambda:self.eraseLastChar())
-        self.button__C.place(x = 5, y = 28, width = 75.25, height = 50)
-        self.button__Percent = Button(self.button, text = '%', command = lambda:self.getPercent())
-        self.button__Percent.place(x = 83.25, y = 28, width = 75.25, height = 50)
-        self.button__Fraction = Button(self.button, text = '1/x', command = lambda:self.getFraction())
-        self.button__Fraction.place(x = 161.5, y = 28, width = 75.25, height = 50)
-        self.button__Remove = Button(self.button, text = 'C', command = lambda:self.reset())
-        self.button__Remove.place(x = 239.75, y = 28, width = 75.25, height = 50)
+        self.button_Remove = customtkinter.CTkButton(self.button, text = '⌫', text_font = self.font, command = lambda:self.eraseLastChar())
+        self.button_Remove.place(x = 5.5, y = 28, width = 75.25, height = 50)
+        self.button_Percent = customtkinter.CTkButton(self.button, text = '%', text_font = self.font, command = lambda:self.getPercent())
+        self.button_Percent.place(x = 83.5, y = 28, width = 75.25, height = 50)
+        self.button_Fraction = customtkinter.CTkButton(self.button, text = '1/x', text_font = self.font, command = lambda:self.getFraction())
+        self.button_Fraction.place(x = 162.4, y = 28, width = 75.25, height = 50)
+        self.button_C = customtkinter.CTkButton(self.button, text = 'C', text_font = ('Consolas', 14,'bold'), command = lambda:self.reset())
+        self.button_C.place(x = 240, y = 28, width = 75.25, height = 50)
 
-        self.button__PointLeft = Button(self.button, text = '<.', command = lambda:self.movePointLeft())
-        self.button__PointLeft.place(x = 5, y = 81, width = 75.25, height = 50)
-        self.button__Square = Button(self.button, text = 'x²', command = lambda:self.getSquare())
-        self.button__Square.place(x = 83.25, y = 81, width = 75.25, height = 50)
-        self.button__SquareRoot = Button(self.button, text = '√x', command = lambda:self.getSquareRoot())
-        self.button__SquareRoot.place(x = 161.5, y = 81, width = 75.25, height = 50)
-        self.button__Division = Button(self.button, text = '÷', command = lambda:self.accept('/'))
-        self.button__Division.place(x = 239.75, y = 81, width = 75.25, height = 50)
+        self.button_PointLeft = customtkinter.CTkButton(self.button, text = '<.', text_font = self.font, command = lambda:self.movePointLeft())
+        self.button_PointLeft.place(x = 5.5, y = 81, width = 75.25, height = 50)
+        self.button_Square = customtkinter.CTkButton(self.button, text = 'x²', text_font = self.font, command = lambda:self.getSquare())
+        self.button_Square.place(x = 83.5, y = 81, width = 75.25, height = 50)
+        self.button_SquareRoot = customtkinter.CTkButton(self.button, text = '√x', text_font = self.font, command = lambda:self.getSquareRoot())
+        self.button_SquareRoot.place(x = 162.4, y = 81, width = 75.25, height = 50)
+        self.button_Division = customtkinter.CTkButton(self.button, text = '÷', text_font = ('Consolas', 20), command = lambda:self.accept('/'))
+        self.button_Division.place(x = 240, y = 81, width = 75.25, height = 50)
 
-        self.button__7 = Button(self.button, text = '7', command = lambda:self.accept(7))
-        self.button__7.place(x = 5, y = 134, width = 75.25, height = 50)
-        self.button__8 = Button(self.button, text = '8', command = lambda:self.accept(8))
-        self.button__8.place(x = 83.25, y = 134, width = 75.25, height = 50)
-        self.button__9 = Button(self.button, text = '9', command = lambda:self.accept(9))
-        self.button__9.place(x = 161.5, y = 134, width = 75.25, height = 50)
-        self.button__Multiplication = Button(self.button, text = '❌', command = lambda:self.accept('*'))
-        self.button__Multiplication.place(x = 239.75, y = 134, width = 75.25, height = 50)
+        self.button_7 = customtkinter.CTkButton(self.button, text = '7',  text_font = self.font, command = lambda:self.accept(7))
+        self.button_7.place(x = 5.5, y = 134, width = 75.25, height = 50)
+        self.button_8 = customtkinter.CTkButton(self.button, text = '8',  text_font = self.font, command = lambda:self.accept(8))
+        self.button_8.place(x = 83.5, y = 134, width = 75.25, height = 50)
+        self.button_9 = customtkinter.CTkButton(self.button, text = '9',  text_font = self.font, command = lambda:self.accept(9))
+        self.button_9.place(x = 162.4, y = 134, width = 75.25, height = 50)
+        self.button_Multiplication = customtkinter.CTkButton(self.button, text = '❌', text_font = ('Consolas',8), command = lambda:self.accept('*'))
+        self.button_Multiplication.place(x = 240, y = 134, width = 75.25, height = 50)
 
-        self.button__4 = Button(self.button, text = '4', command = lambda:self.accept(4))
-        self.button__4.place(x = 5, y = 187, width = 75.25, height = 50)
-        self.button__5 = Button(self.button, text = '5', command = lambda:self.accept(5))
-        self.button__5.place(x = 83.25, y = 187, width = 75.25, height = 50)
-        self.button__6 = Button(self.button, text = '6', command = lambda:self.accept(6))
-        self.button__6.place(x = 161.5, y = 187, width = 75.25, height = 50)
-        self.button__Substraction = Button(self.button, text = '-', command = lambda:self.accept('-'))
-        self.button__Substraction.place(x = 239.75, y = 187, width = 75.25, height = 50)
+        self.button_4 = customtkinter.CTkButton(self.button, text = '4',  text_font = self.font, command = lambda:self.accept(4))
+        self.button_4.place(x = 5.5, y = 187, width = 75.25, height = 50)
+        self.button_5 = customtkinter.CTkButton(self.button, text = '5',  text_font = self.font, command = lambda:self.accept(5))
+        self.button_5.place(x = 83.5, y = 187, width = 75.25, height = 50)
+        self.button_6 = customtkinter.CTkButton(self.button, text = '6',  text_font = self.font, command = lambda:self.accept(6))
+        self.button_6.place(x = 162.4, y = 187, width = 75.25, height = 50)
+        self.button_Substraction = customtkinter.CTkButton(self.button, text = '-', text_font = ('Consolas', 20), command = lambda:self.accept('-'))
+        self.button_Substraction.place(x = 240, y = 187, width = 75.25, height = 50)
 
-        self.button__1 = Button(self.button, text = '1', command = lambda:self.accept(1))
-        self.button__1.place(x = 5, y = 240, width = 75.25, height = 50)
-        self.button__2 = Button(self.button, text = '2', command = lambda:self.accept(2))
-        self.button__2.place(x = 83.25, y = 240, width = 75.25, height = 50)
-        self.button__3 = Button(self.button, text = '3', command = lambda:self.accept(3))
-        self.button__3.place(x = 161.5, y = 240, width = 75.25, height = 50)
-        self.button__Addition = Button(self.button, text = '+', command = lambda:self.accept('+'))
-        self.button__Addition.place(x = 239.75, y = 240, width = 75.25, height = 50)
+        self.button_1 = customtkinter.CTkButton(self.button, text = '1', text_font = self.font, command = lambda:self.accept(1))
+        self.button_1.place(x = 5.5, y = 240, width = 75.25, height = 50)
+        self.button_2 = customtkinter.CTkButton(self.button, text = '2', text_font = self.font, command = lambda:self.accept(2))
+        self.button_2.place(x = 83.5, y = 240, width = 75.25, height = 50)
+        self.button_3 = customtkinter.CTkButton(self.button, text = '3', text_font = self.font, command = lambda:self.accept(3))
+        self.button_3.place(x = 162.4, y = 240, width = 75.25, height = 50)
+        self.button_Addition = customtkinter.CTkButton(self.button, text = '+', text_font = ('Consolas', 20), command = lambda:self.accept('+'))
+        self.button_Addition.place(x = 240, y = 240, width = 75.25, height = 50)
 
-        self.button__PointRight = Button(self.button, text = '.>', command = lambda:self.movePointRight())
-        self.button__PointRight.place(x = 5, y = 293, width = 75.25, height = 50)
-        self.button__0 = Button(self.button, text = '0', command = lambda:self.accept(0))
-        self.button__0.place(x = 83.25, y = 293, width = 75.25, height = 50)
-        self.button__Point = Button(self.button, text = '.', command = lambda:self.accept('.'))
-        self.button__Point.place(x = 161.5, y = 293, width = 75.25, height = 50)
-        self.button__Result = Button(self.button, text = '=', command = lambda:self.math('='))
-        self.button__Result.place(x = 239.75, y = 293, width = 75.25, height = 50)
+        self.button_PointRight = customtkinter.CTkButton(self.button, text = '.>',  text_font = self.font, command = lambda:self.movePointRight())
+        self.button_PointRight.place(x = 5.5, y = 293, width = 75.25, height = 50)
+        self.button_0 = customtkinter.CTkButton(self.button, text = '0',  text_font = self.font, command = lambda:self.accept(0))
+        self.button_0.place(x = 83.5, y = 293, width = 75.25, height = 50)
+        self.button_Point = customtkinter.CTkButton(self.button, text = '.',  text_font = self.font, command = lambda:self.accept('.'))
+        self.button_Point.place(x = 162.4, y = 293, width = 75.25, height = 50)
+        self.button_Result = customtkinter.CTkButton(self.button, text = '=', text_font = ('Consolas', 20,'bold'), command = lambda:self.math('='))
+        self.button_Result.place(x = 240, y = 293, width = 75.25, height = 50)
+        
+        
+        self.historyButton = customtkinter.CTkButton(self.window, text = '🕒', text_font = ('Consolas', 16), command = self.displayHistory)
+        self.historyButton.configure(
+            bg_color = self.background,
+            fg_color = self.background,
+            text_color = self.foreground2,
+            hover_color = self.buttonactivebackground,
+            corner_radius = 8
+        )
+        self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
+        self.hover(self.historyButton, self.buttonbackground1, self.foreground2)
+        self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+
         
         # buttons style
-        for i in (self.button__1, self.button__2, self.button__3, self.button__4, self.button__5, self.button__6, self.button__7, self.button__8, self.button__9, self.button__0, self.button__PointRight, self.button__Point):
+        for i in (self.button_1, self.button_2, self.button_3, self.button_4, self.button_5, self.button_6, self.button_7, self.button_8, self.button_9, self.button_0, self.button_PointRight, self.button_Point):
             i.configure(
-                background = self.buttonbackground1,
-                foreground = self.buttonforeground,
-                font = self.font,
-                relief = 'flat',
-                activebackground = self.buttonactivebackground,
-                activeforeground = self.buttonforeground
+                bg_color = self.background,
+                fg_color = self.buttonbackground1,
+                text_color = self.buttonforeground,
+                hover_color = self.buttonactivebackground,
+                corner_radius = 5
             )
-            self.hover(i, self.buttonactivebackground, self.buttonbackground1, self.buttonforeground, self.buttonforeground)
+            self.hover(i, self.buttonbackground1, self.foreground)
         
         
-        for i in (self.button__C, self.button__Percent, self.button__Fraction, self.button__Remove, self.button__PointLeft, self.button__Square, self.button__SquareRoot):
+        for i in (self.button_Remove, self.button_Percent, self.button_Fraction, self.button_PointLeft, self.button_Square, self.button_SquareRoot):
             i.configure(
-                background = self.buttonbackground2,
-                foreground = self.buttonforeground,
-                font = self.font,
-                relief = 'flat',
-                activebackground = self.buttonactivebackground,
-                activeforeground = self.buttonforeground
+                bg_color = self.background,
+                fg_color = self.buttonbackground2,
+                text_color = self.buttonforeground,
+                hover_color = self.buttonactivebackground,
+                corner_radius = 5
             )
-            self.hover(i, self.buttonactivebackground, self.buttonbackground2, self.buttonforeground, self.buttonforeground)
+            self.hover(i, self.buttonbackground1, self.foreground) 
         
         
-        for i in (self.button__Substraction, self.button__Addition, self.button__Division):
+        for i in (self.button_Substraction, self.button_Addition, self.button_Division):
             i.configure(
-                background = self.buttonbackground2,
-                foreground = self.buttonforeground,
-                font = ('Consolas', 20),
-                relief = 'flat',
-                activebackground = self.buttonactivebackground,
-                activeforeground = self.buttonforeground
+                bg_color = self.background,
+                fg_color = self.buttonbackground2,
+                text_color = self.buttonforeground,
+                hover_color = self.buttonactivebackground,
+                corner_radius = 5
             )
-            self.hover(i, self.buttonactivebackground, self.buttonbackground2, self.buttonforeground, self.buttonforeground)
+            self.hover(i, self.buttonbackground1, self.foreground)
             
         
-        self.button__Remove.configure(
-            background = self.buttonbackground2,
-            foreground = self.foreground2,
-            font = ('Consolas', 14,'bold'),
-            relief = 'flat',
-            activebackground = self.buttonactivebackground,
-            activeforeground = self.foreground2
+        self.button_C.configure(
+            bg_color = self.background,
+            fg_color = self.buttonbackground2,
+            text_color = self.foreground2,
+            hover_color = self.buttonactivebackground,
+            corner_radius = 5
             )
-        self.hover(self.button__Remove, self.buttonactivebackground, self.buttonbackground2, self.foreground2, self.foreground2)
+        self.hover(self.button_C, self.buttonbackground1, self.foreground2)
         
         
-        self.button__Result.configure(
-                background = self.foreground2,
-                foreground = self.buttonbackground1,
-                font = ('Consolas', 20,'bold'),
-                relief = 'flat',
-                activebackground = self.buttonactivebackground,
-                activeforeground = self.foreground2
+        self.button_Result.configure(
+                bg_color = self.background,
+                fg_color = self.foreground2,
+                text_color = self.buttonbackground1,
+                hover_color = self.buttonactivebackground,
+                corner_radius = 5
             )
-        self.hover(self.button__Result, self.buttonactivebackground, self.foreground2, self.foreground2, self.buttonbackground1)
+        self.hover(self.button_Result, self.buttonbackground1, self.buttonbackground1)
         
         
-        self.button__Multiplication.configure(
-            background = self.buttonbackground2,
-            foreground = self.buttonforeground,
-            font = ('Consolas',8),
-            relief = 'flat',
-            activebackground = self.buttonactivebackground,
-            activeforeground = self.buttonforeground
+        self.button_Multiplication.configure(
+            bg_color = self.background,
+            fg_color = self.buttonbackground2,
+            text_color = self.buttonforeground,
+            hover_color = self.buttonactivebackground,
+            corner_radius = 5
             )
-        self.hover(self.button__Multiplication, self.buttonactivebackground, self.buttonbackground2, self.buttonforeground, self.buttonforeground)
-
-    
-    def hover(self, btn, colorOnHover, colorOnLeave, colorfgOnHover, colorfgOnLeave):
-        btn.bind("<Enter>", func = lambda i: btn.config(background = colorOnHover, foreground = colorfgOnHover))
-        btn.bind("<Leave>", func = lambda i: btn.config(background = colorOnLeave, foreground = colorfgOnLeave))
+        self.hover(self.button_Multiplication, self.buttonbackground1, self.foreground)
     # buttons style end
     
+    
+    
+    def hover(self, btn, colorfgOnHover, colorfgOnLeave):
+        btn.bind("<Enter>", func = lambda i: btn.configure(text_color = colorfgOnHover))
+        btn.bind("<Leave>", func = lambda i: btn.configure(text_color = colorfgOnLeave))
+        
+        
+        
     def accept(self,i):
         if self.str == '0' and i == 0:
             self.reset()
@@ -235,76 +237,83 @@ class Calculator():
         self.historyLabel.place(y = 60, width = 323, height = 450)
         self.historyLog.place(x = 12, y = 0)
         self.historyLog['text'] = ('\n'.join(i for i in self.history))
-        self.historyButton['bg'] = '#1f1e24'
+        self.historyButton['bg'] = self.background
+        self.tip_history.destroy()
         
         # add close history button
-        self.button__closeHistory = Button(self.window, text = 'x', command = lambda:self.closeHistory())
-        self.button__closeHistory.configure(
-            background = self.background,
-            foreground = self.foreground2,
-            font = self.font,
-            relief = 'flat',
-            activebackground = self.buttonactivebackground,
-            activeforeground = self.foreground2
+        self.button_CloseHistory = customtkinter.CTkButton(self.window, text = 'x', text_font = self.font, command = self.closeHistory)
+        self.button_CloseHistory.configure(
+            bg_color = self.background,
+            fg_color = self.background,
+            text_color = self.foreground2,
+            hover_color = self.buttonactivebackground,
+            corner_radius = 8
         )
-        self.hover(self.button__closeHistory, self.buttonactivebackground, self.background, self.foreground2, self.foreground2)
-        self.button__closeHistory.place(x = 260, y = 5, width = 50, height = 50)
+        self.hover(self.button_CloseHistory, self.buttonbackground1, self.foreground2)
+        self.button_CloseHistory.place(x = 260, y = 5, width = 50, height = 50)
 
         # copy history
-        self.button__copyHistory = Button(self.window, text = '📑\ncopy', command = lambda:self.copyHistory())
-        self.button__copyHistory.place(x = 5, y = 5, width = 50, height = 50)
+        self.button_CopyHistory = customtkinter.CTkButton(self.window, text = '📑\ncopy', text_font = ('Consolas', 10), command = self.copyHistory)
+        self.button_CopyHistory.place(x = 5, y = 5, width = 50, height = 50)
+        
 
         # save history to .txt file
-        self.button__saveToTXT = Button(self.window, text = '💾\ntxt', command = lambda:self.saveToTXT())
-        self.button__saveToTXT.place(x = 55, y = 5, width = 50, height = 50)
+        self.button_saveToTXT = customtkinter.CTkButton(self.window, text = '💾\ntxt', text_font = ('Consolas', 10), command = self.saveToTXT)
+        self.button_saveToTXT.place(x = 55, y = 5, width = 50, height = 50)
+        
 
         # save history to .json file
-        self.button__saveToJSON = Button(self.window, text = '💾\njson', command = lambda:self.saveToJSON())
-        self.button__saveToJSON.place(x = 105, y = 5, width = 50, height = 50)
+        self.button_saveToJSON = customtkinter.CTkButton(self.window, text = '💾\njson', text_font = ('Consolas', 10), command = self.saveToJSON)
+        self.button_saveToJSON.place(x = 105, y = 5, width = 50, height = 50)
+        
 
         # save history to .csv file
-        self.button__saveToCSV = Button(self.window, text = '💾\ncsv', command = lambda:self.saveToCSV())
-        self.button__saveToCSV.place(x = 155, y = 5, width = 50, height = 50)
+        self.button_saveToCSV = customtkinter.CTkButton(self.window, text = '💾\ncsv', text_font = ('Consolas', 10), command = self.saveToCSV)
+        self.button_saveToCSV.place(x = 155, y = 5, width = 50, height = 50)
+        
 
         # clean history
-        self.button__cleanHistory = Button(self.window, text = '🧽\nclean', command = lambda:self.cleanHistory())
-        self.button__cleanHistory.place(x = 205, y = 5, width = 50, height = 50)
+        self.button_CleanHistory = customtkinter.CTkButton(self.window, text = '🧽\nclean', text_font = ('Consolas', 10), command = self.cleanHistory)
+        self.button_CleanHistory.place(x = 205, y = 5, width = 50, height = 50)
+        
 
-        for i in (self.button__copyHistory, self.button__cleanHistory, self.button__saveToCSV, self.button__saveToJSON, self.button__saveToTXT, self.copyHistory):
+        for i in (self.button_CopyHistory, self.button_CleanHistory, self.button_saveToCSV, self.button_saveToJSON, self.button_saveToTXT):
             i.configure(
-                background = self.background,
-                foreground = self.foreground,
-                font = self.font,
-                relief = 'flat',
-                activebackground = self.buttonactivebackground,
-                activeforeground = self.foreground
+                bg_color = self.background,
+                fg_color = self.background,
+                text_color = self.foreground,
+                hover_color = self.buttonactivebackground,
+                corner_radius = 8
                 )
-            self.hover(i, self.buttonactivebackground, self.background, self.buttonforeground, self.buttonforeground)
+            self.hover(i, self.buttonbackground1, self.foreground)
+        
+        
+        self.tip_close_history = ToolTip(self.button_CloseHistory, msg = 'Close history', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.tip_copy_history = ToolTip(self.button_CopyHistory, msg = 'Copy history', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.tip_copy_history_txt = ToolTip(self.button_saveToTXT, msg = 'Save history to .txt file', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.tip_copy_history_json = ToolTip(self.button_saveToJSON, msg = 'Save history to .json file', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.tip_copy_history_csv = ToolTip(self.button_saveToCSV, msg = 'Save history to .csv file', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.tip_clean_history = ToolTip(self.button_CleanHistory, msg = 'Remove history', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
         
         # remove history button
         self.historyButton.destroy()
+        self.tip_history.destroy()
 
 
     def closeHistory(self):
-        self.historyLabel.destroy()
-        self.historyLog.destroy()
-        self.button__closeHistory.destroy()
-        self.button__cleanHistory.destroy()
-        self.button__copyHistory.destroy()
-        self.button__saveToCSV.destroy()
-        self.button__saveToTXT.destroy()
-        self.button__saveToJSON.destroy()
-        self.historyButton = Button(self.window, text = '🕒', command = lambda:self.displayHistory())
+        for i in (self.historyLabel,self.historyLog,self.button_CloseHistory,self.button_CleanHistory,self.button_CopyHistory,self.button_saveToCSV,self.button_saveToTXT,self.button_saveToJSON,self.tip_clean_history,self.tip_close_history,self.tip_copy_history_csv,self.tip_copy_history_json,self.tip_copy_history_txt):
+            i.destroy()
+        self.historyButton = customtkinter.CTkButton(self.window, text = '🕒', text_font = ('Consolas', 16), command = self.displayHistory)
         self.historyButton.configure(
-            background = self.background,
-            foreground = self.foreground,
-            font = ('Consolas', 20),
-            relief = 'flat',
-            activebackground = self.background,
-            activeforeground = self.foreground
+            bg_color = self.background,
+            fg_color = self.background,
+            text_color = self.foreground2,
+            hover_color = self.buttonactivebackground,
+            corner_radius = 5
         )
-        self.hover(self.historyButton, self.buttonactivebackground, self.background, self.foreground, self.foreground)
+        self.hover(self.historyButton, self.buttonbackground1, self.foreground2)
         self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
+        self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
 
 
     def cleanHistory(self):
