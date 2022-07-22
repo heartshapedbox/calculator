@@ -10,4 +10,4 @@
 calculator (.py / .exe)
 
 Stack:
-Python, Tkinter.
+Python, Tkinter, CustomTkinter.
