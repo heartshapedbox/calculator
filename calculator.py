@@ -32,47 +32,47 @@ class Calculator():
         self.logVal = ''
         self.history = []
         
-        self.background = '#1f1e24'
-        self.foreground = '#f0ebf0'
-        self.foreground2 = '#f757a4'
-        self.buttonbackground1 = '#473d47'
-        self.buttonbackground2 = '#363336'
-        self.buttonforeground = '#f0ebf0'
-        self.buttonactivebackground = '#262426'
+        self.accent_color_1 = '#1f1e24'
+        self.accent_color_2 = '#f0ebf0'
+        self.accent_color_3 = '#f757a4'
+        self.accent_color_4 = '#473d47'
+        self.accent_color_5 = '#363336'
+        self.accent_color_6 = '#f0ebf0'
+        self.accent_color_7 = '#262426'
         self.font = ('Consolas', 12)
         
-        self.window = Label(root, text = '', bg = self.background)
+        self.window = Label(root, text = '', bg = self.accent_color_1)
         self.window.place(width = 323, height = 508)
 
-        self.logArea = Label(self.window, text = '', bg = self.background)
+        self.logArea = Label(self.window, text = '', bg = self.accent_color_1)
         self.logArea.place(x = 5, y = 55, width = 295, height = 45)
-        self.logAreaMessage = Message(self.logArea, width = 300, textvariable = self.log, bg = self.background, fg = self.foreground, font = self.font)
+        self.logAreaMessage = Message(self.logArea, width = 300, textvariable = self.log, bg = self.accent_color_1, fg = self.accent_color_2, font = self.font)
         self.logAreaMessage.place(x = 7, y = 5)
 
-        self.displayArea = Label(self.window, text = '', bg = self.background)
+        self.displayArea = Label(self.window, text = '', bg = self.accent_color_1)
         self.displayArea.place(x = 5, y = 100, width = 300, height = 50)
-        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = self.background, fg = self.foreground2, font = ('Consolas', 22,'bold'))
+        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = self.accent_color_1, fg = self.accent_color_3, font = ('Consolas', 22,'bold'))
         self.displayAreaMessage.place(x = -1, y = -5)
 
-        self.button = Label(self.window, text = '', bg = self.background)
+        self.button = Label(self.window, text = '', bg = self.accent_color_1)
         self.button.place(x = -4, y = 153, width = 323, height = 355)
 
-        # button_MC = Button(self.button, text = 'MC', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MC'))
+        # button_MC = Button(self.button, text = 'MC', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MC'))
         # button_MC.place(x = 5, y = -3, width = 49, height = 25)
         # button_MC['relief'] = 'flat'
-        # button_MR = Button(self.button, text = 'MR', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR'))
+        # button_MR = Button(self.button, text = 'MR', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MR'))
         # button_MR.place(x = 57, y = -3, width = 49, height = 25)
         # button_MR['relief'] = 'flat'
-        # button_MRP = Button(self.button, text = 'MR+', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR+'))
+        # button_MRP = Button(self.button, text = 'MR+', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MR+'))
         # button_MRP.place(x = 109, y = -3, width = 49, height = 25)
         # button_MRP['relief'] = 'flat'
-        # button_MRN = Button(self.button, text = 'MR-', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MR-'))
+        # button_MRN = Button(self.button, text = 'MR-', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MR-'))
         # button_MRN.place(x = 162, y = -3, width = 49, height = 25)
         # button_MRN['relief'] = 'flat'
-        # button_MS = Button(self.button, text = 'MS', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('MS'))
+        # button_MS = Button(self.button, text = 'MS', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MS'))
         # button_MS.place(x = 215, y = -3, width = 49, height = 25)
         # button_MS['relief'] = 'flat'
-        # button_MM = Button(self.button, text = 'M▼', bg = self.background, fg = self.foreground, font = self.font, command = lambda:self.accept('M▼'))
+        # button_MM = Button(self.button, text = 'M▼', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('M▼'))
         # button_MM.place(x = 266, y = -3, width = 49, height = 25)
         # button_MM['relief'] = 'flat'
             
@@ -133,79 +133,79 @@ class Calculator():
         
         self.historyButton = customtkinter.CTkButton(self.window, text = '🕒', text_font = ('Consolas', 16), command = self.displayHistory)
         self.historyButton.configure(
-            bg_color = self.background,
-            fg_color = self.background,
-            text_color = self.foreground2,
-            hover_color = self.buttonactivebackground,
+            bg_color = self.accent_color_1,
+            fg_color = self.accent_color_1,
+            text_color = self.accent_color_3,
+            hover_color = self.accent_color_7,
             corner_radius = 8
         )
         self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
-        self.hover(self.historyButton, self.buttonbackground1, self.foreground2)
-        self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.hover(self.historyButton, self.accent_color_4, self.accent_color_3)
+        self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
 
         
         # buttons style
         for i in (self.button_1, self.button_2, self.button_3, self.button_4, self.button_5, self.button_6, self.button_7, self.button_8, self.button_9, self.button_0, self.button_PointRight, self.button_Point):
             i.configure(
-                bg_color = self.background,
-                fg_color = self.buttonbackground1,
-                text_color = self.buttonforeground,
-                hover_color = self.buttonactivebackground,
+                bg_color = self.accent_color_1,
+                fg_color = self.accent_color_4,
+                text_color = self.accent_color_6,
+                hover_color = self.accent_color_7,
                 corner_radius = 5
             )
-            self.hover(i, self.buttonbackground1, self.foreground)
+            self.hover(i, self.accent_color_4, self.accent_color_2)
         
         
         for i in (self.button_Remove, self.button_Percent, self.button_Fraction, self.button_PointLeft, self.button_Square, self.button_SquareRoot):
             i.configure(
-                bg_color = self.background,
-                fg_color = self.buttonbackground2,
-                text_color = self.buttonforeground,
-                hover_color = self.buttonactivebackground,
+                bg_color = self.accent_color_1,
+                fg_color = self.accent_color_5,
+                text_color = self.accent_color_6,
+                hover_color = self.accent_color_7,
                 corner_radius = 5
             )
-            self.hover(i, self.buttonbackground1, self.foreground) 
+            self.hover(i, self.accent_color_4, self.accent_color_2) 
         
         
         for i in (self.button_Substraction, self.button_Addition, self.button_Division):
             i.configure(
-                bg_color = self.background,
-                fg_color = self.buttonbackground2,
-                text_color = self.buttonforeground,
-                hover_color = self.buttonactivebackground,
+                bg_color = self.accent_color_1,
+                fg_color = self.accent_color_5,
+                text_color = self.accent_color_6,
+                hover_color = self.accent_color_7,
                 corner_radius = 5
             )
-            self.hover(i, self.buttonbackground1, self.foreground)
+            self.hover(i, self.accent_color_4, self.accent_color_2)
             
         
         self.button_C.configure(
-            bg_color = self.background,
-            fg_color = self.buttonbackground2,
-            text_color = self.foreground2,
-            hover_color = self.buttonactivebackground,
+            bg_color = self.accent_color_1,
+            fg_color = self.accent_color_5,
+            text_color = self.accent_color_3,
+            hover_color = self.accent_color_7,
             corner_radius = 5
             )
-        self.hover(self.button_C, self.buttonbackground1, self.foreground2)
+        self.hover(self.button_C, self.accent_color_4, self.accent_color_3)
         
         
         self.button_Result.configure(
-                bg_color = self.background,
-                fg_color = self.foreground2,
-                text_color = self.buttonbackground1,
-                hover_color = self.buttonactivebackground,
+                bg_color = self.accent_color_1,
+                fg_color = self.accent_color_3,
+                text_color = self.accent_color_4,
+                hover_color = self.accent_color_7,
                 corner_radius = 5
             )
-        self.hover(self.button_Result, self.buttonbackground1, self.buttonbackground1)
+        self.hover(self.button_Result, self.accent_color_4, self.accent_color_4)
         
         
         self.button_Multiplication.configure(
-            bg_color = self.background,
-            fg_color = self.buttonbackground2,
-            text_color = self.buttonforeground,
-            hover_color = self.buttonactivebackground,
+            bg_color = self.accent_color_1,
+            fg_color = self.accent_color_5,
+            text_color = self.accent_color_6,
+            hover_color = self.accent_color_7,
             corner_radius = 5
             )
-        self.hover(self.button_Multiplication, self.buttonbackground1, self.foreground)
+        self.hover(self.button_Multiplication, self.accent_color_4, self.accent_color_2)
     # buttons style end
     
     
@@ -232,24 +232,24 @@ class Calculator():
 
     def displayHistory(self):
         # add history area
-        self.historyLabel = Label(self.window, text = '', bg = self.background, fg = self.foreground)
-        self.historyLog = Message(self.historyLabel, text = '', bg = self.background, fg = self.foreground, font = self.font, width = 200)
+        self.historyLabel = Label(self.window, text = '', bg = self.accent_color_1, fg = self.accent_color_2)
+        self.historyLog = Message(self.historyLabel, text = '', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, width = 200)
         self.historyLabel.place(y = 60, width = 323, height = 450)
         self.historyLog.place(x = 12, y = 0)
         self.historyLog['text'] = ('\n'.join(i for i in self.history))
-        self.historyButton['bg'] = self.background
+        self.historyButton['bg'] = self.accent_color_1
         self.tip_history.destroy()
         
         # add close history button
         self.button_CloseHistory = customtkinter.CTkButton(self.window, text = 'x', text_font = self.font, command = self.closeHistory)
         self.button_CloseHistory.configure(
-            bg_color = self.background,
-            fg_color = self.background,
-            text_color = self.foreground2,
-            hover_color = self.buttonactivebackground,
+            bg_color = self.accent_color_1,
+            fg_color = self.accent_color_1,
+            text_color = self.accent_color_3,
+            hover_color = self.accent_color_7,
             corner_radius = 8
         )
-        self.hover(self.button_CloseHistory, self.buttonbackground1, self.foreground2)
+        self.hover(self.button_CloseHistory, self.accent_color_4, self.accent_color_3)
         self.button_CloseHistory.place(x = 260, y = 5, width = 50, height = 50)
 
         # copy history
@@ -279,21 +279,21 @@ class Calculator():
 
         for i in (self.button_CopyHistory, self.button_CleanHistory, self.button_saveToCSV, self.button_saveToJSON, self.button_saveToTXT):
             i.configure(
-                bg_color = self.background,
-                fg_color = self.background,
-                text_color = self.foreground,
-                hover_color = self.buttonactivebackground,
+                bg_color = self.accent_color_1,
+                fg_color = self.accent_color_1,
+                text_color = self.accent_color_2,
+                hover_color = self.accent_color_7,
                 corner_radius = 8
                 )
-            self.hover(i, self.buttonbackground1, self.foreground)
+            self.hover(i, self.accent_color_4, self.accent_color_2)
         
         
-        self.tip_close_history = ToolTip(self.button_CloseHistory, msg = 'Close history', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
-        self.tip_copy_history = ToolTip(self.button_CopyHistory, msg = 'Copy history', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
-        self.tip_copy_history_txt = ToolTip(self.button_saveToTXT, msg = 'Save history to .txt file', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
-        self.tip_copy_history_json = ToolTip(self.button_saveToJSON, msg = 'Save history to .json file', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
-        self.tip_copy_history_csv = ToolTip(self.button_saveToCSV, msg = 'Save history to .csv file', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
-        self.tip_clean_history = ToolTip(self.button_CleanHistory, msg = 'Remove history', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.tip_close_history = ToolTip(self.button_CloseHistory, msg = 'Close history', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
+        self.tip_copy_history = ToolTip(self.button_CopyHistory, msg = 'Copy history', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
+        self.tip_copy_history_txt = ToolTip(self.button_saveToTXT, msg = 'Save history to .txt file', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
+        self.tip_copy_history_json = ToolTip(self.button_saveToJSON, msg = 'Save history to .json file', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
+        self.tip_copy_history_csv = ToolTip(self.button_saveToCSV, msg = 'Save history to .csv file', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
+        self.tip_clean_history = ToolTip(self.button_CleanHistory, msg = 'Remove history', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
         
         # remove history button
         self.historyButton.destroy()
@@ -305,15 +305,15 @@ class Calculator():
             i.destroy()
         self.historyButton = customtkinter.CTkButton(self.window, text = '🕒', text_font = ('Consolas', 16), command = self.displayHistory)
         self.historyButton.configure(
-            bg_color = self.background,
-            fg_color = self.background,
-            text_color = self.foreground2,
-            hover_color = self.buttonactivebackground,
+            bg_color = self.accent_color_1,
+            fg_color = self.accent_color_1,
+            text_color = self.accent_color_3,
+            hover_color = self.accent_color_7,
             corner_radius = 5
         )
-        self.hover(self.historyButton, self.buttonbackground1, self.foreground2)
+        self.hover(self.historyButton, self.accent_color_4, self.accent_color_3)
         self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
-        self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.buttonbackground1, "padx": 1, "pady": 1}, fg=self.foreground2, bg=self.buttonactivebackground, pady = 5, delay = 1)
+        self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
 
 
     def cleanHistory(self):
