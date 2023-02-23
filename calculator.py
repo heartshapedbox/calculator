@@ -49,7 +49,7 @@ class Calculator():
                              bg=self.accent_color_1, width=295, height=45)
         self.logArea.place(x=5, y=60)
         self.logAreaMessage = Message(self.logArea, width=500, textvariable=self.log,
-                                      bg=self.accent_color_1, fg=self.accent_color_2, font=('Consolas', 20))
+                                      bg=self.accent_color_1, fg=self.accent_color_4, font=('Consolas', 20))
         self.logAreaMessage.place(x=7, y=55)
 
         self.displayArea = Label(self.window, text='',
@@ -161,7 +161,7 @@ class Calculator():
         self.button_Result.place(x=240, y=293)
 
         self.historyButton = customtkinter.CTkButton(self.window, text='🕒', font=(
-            'Consolas', 16), width=50, height=50, command=self.displayHistory)
+            'Consolas', 20), width=50, height=50, command=self.displayHistory)
         self.historyButton.configure(
             bg_color=self.accent_color_1,
             fg_color=self.accent_color_1,
@@ -257,7 +257,7 @@ class Calculator():
         self.historyLabel = Label(self.window, text='', width=323,
                                   height=450, bg=self.accent_color_1, fg=self.accent_color_2)
         self.historyLog = Message(self.historyLabel, text='', bg=self.accent_color_1,
-                                  fg=self.accent_color_2, font=('Consolas', 20), width=500)
+                                  fg=self.accent_color_4, font=('Consolas', 20), width=500)
         self.historyLabel.place(y=100)
         self.historyLog.place(x=12, y=16)
         self.historyLog['text'] = ('\n'.join(i for i in self.history))
