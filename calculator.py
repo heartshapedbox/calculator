@@ -7,7 +7,7 @@ import json
 import csv
 import math
 import os
-os.chdir('C:\\Users\\baben\\Documents\\GitHub\\calculator\\')
+os.chdir('C:\\Users\\Dima\\Documents\\GitHub\\calculator\\')
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme('dark-blue')
 
@@ -17,7 +17,7 @@ root.title('Calculator')
 x = int(root.winfo_screenwidth() // 2)
 y = int(root.winfo_screenheight() * 0.2)
 x, y = str(x), str(y)
-root.geometry(f'320x505+{x}+{y}')
+root.geometry(f'320x473+{x}+{y}')
 # root.attributes('-alpha', 0.95)
 root.resizable(False, False)
 root.iconbitmap('assets\\logo.ico')
@@ -39,23 +39,23 @@ class Calculator():
         self.accent_color_5 = '#363336'
         self.accent_color_6 = '#f0ebf0'
         self.accent_color_7 = '#262426'
-        self.font = ('Consolas', 12)
+        self.font = ('Consolas', 18)
         
-        self.window = Label(root, text = '', bg = self.accent_color_1)
-        self.window.place(width = 323, height = 508)
+        self.window = Label(root, text = '', bg = self.accent_color_1, width = 323, height = 508)
+        self.window.pack()
 
-        self.logArea = Label(self.window, text = '', bg = self.accent_color_1)
-        self.logArea.place(x = 5, y = 55, width = 295, height = 45)
-        self.logAreaMessage = Message(self.logArea, width = 300, textvariable = self.log, bg = self.accent_color_1, fg = self.accent_color_2, font = self.font)
-        self.logAreaMessage.place(x = 7, y = 5)
+        self.logArea = Label(self.window, text = '', bg = self.accent_color_1, width = 295, height = 45)
+        self.logArea.place(x = 5, y = 60)
+        self.logAreaMessage = Message(self.logArea, width = 500, textvariable = self.log, bg = self.accent_color_1, fg = self.accent_color_2, font = ('Consolas', 20))
+        self.logAreaMessage.place(x = 7, y = 55)
 
-        self.displayArea = Label(self.window, text = '', bg = self.accent_color_1)
-        self.displayArea.place(x = 5, y = 100, width = 300, height = 50)
-        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = self.accent_color_1, fg = self.accent_color_3, font = ('Consolas', 22,'bold'))
-        self.displayAreaMessage.place(x = -1, y = -5)
+        self.displayArea = Label(self.window, text = '', bg = self.accent_color_1, width = 300, height = 50)
+        self.displayArea.place(x = 5, y = 170)
+        self.displayAreaMessage = Message(self.displayArea, width = 300, textvariable = self.val, bg = self.accent_color_1, fg = self.accent_color_3, font = ('Consolas', 36,'bold'))
+        self.displayAreaMessage.place(x = -1, y = 10)
 
-        self.button = Label(self.window, text = '', bg = self.accent_color_1)
-        self.button.place(x = -4, y = 153, width = 323, height = 355)
+        self.button = Label(self.window, text = '', bg = self.accent_color_1, width = 323, height = 355)
+        self.button.place(x = -4, y = 245)
 
         # button_MC = Button(self.button, text = 'MC', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MC'))
         # button_MC.place(x = 5, y = -3, width = 49, height = 25)
@@ -76,62 +76,61 @@ class Calculator():
         # button_MM.place(x = 266, y = -3, width = 49, height = 25)
         # button_MM['relief'] = 'flat'
             
-        self.button_Remove = customtkinter.CTkButton(self.button, text = '⌫', text_font = self.font, command = lambda:self.eraseLastChar())
-        self.button_Remove.place(x = 5.5, y = 28, width = 75.25, height = 50)
-        self.button_Percent = customtkinter.CTkButton(self.button, text = '%', text_font = self.font, command = lambda:self.getPercent())
-        self.button_Percent.place(x = 83.5, y = 28, width = 75.25, height = 50)
-        self.button_Fraction = customtkinter.CTkButton(self.button, text = '1/x', text_font = self.font, command = lambda:self.getFraction())
-        self.button_Fraction.place(x = 162.4, y = 28, width = 75.25, height = 50)
-        self.button_C = customtkinter.CTkButton(self.button, text = 'C', text_font = ('Consolas', 14,'bold'), command = lambda:self.reset())
-        self.button_C.place(x = 240, y = 28, width = 75.25, height = 50)
+        self.button_Remove = customtkinter.CTkButton(self.button, text = '⌫', font = ('Consolas', 14) , width = 75.25, height = 50, command = lambda:self.eraseLastChar())
+        self.button_Remove.place(x = 5.5, y = 28)
+        self.button_Percent = customtkinter.CTkButton(self.button, text = '%', font = self.font, width = 75.25, height = 50, command = lambda:self.getPercent())
+        self.button_Percent.place(x = 83.5, y = 28)
+        self.button_Fraction = customtkinter.CTkButton(self.button, text = '1/x', font = self.font, width = 75.25, height = 50, command = lambda:self.getFraction())
+        self.button_Fraction.place(x = 162.4, y = 28)
+        self.button_C = customtkinter.CTkButton(self.button, text = 'C', font = ('Consolas', 18,'bold'), width = 75.25, height = 50, command = lambda:self.reset())
+        self.button_C.place(x = 240, y = 28)
 
-        self.button_PointLeft = customtkinter.CTkButton(self.button, text = '<.', text_font = self.font, command = lambda:self.movePointLeft())
-        self.button_PointLeft.place(x = 5.5, y = 81, width = 75.25, height = 50)
-        self.button_Square = customtkinter.CTkButton(self.button, text = 'x²', text_font = self.font, command = lambda:self.getSquare())
-        self.button_Square.place(x = 83.5, y = 81, width = 75.25, height = 50)
-        self.button_SquareRoot = customtkinter.CTkButton(self.button, text = '√x', text_font = self.font, command = lambda:self.getSquareRoot())
-        self.button_SquareRoot.place(x = 162.4, y = 81, width = 75.25, height = 50)
-        self.button_Division = customtkinter.CTkButton(self.button, text = '÷', text_font = ('Consolas', 20), command = lambda:self.accept('/'))
-        self.button_Division.place(x = 240, y = 81, width = 75.25, height = 50)
+        self.button_PointLeft = customtkinter.CTkButton(self.button, text = '<.', font = self.font, width = 75.25, height = 50, command = lambda:self.movePointLeft())
+        self.button_PointLeft.place(x = 5.5, y = 81)
+        self.button_Square = customtkinter.CTkButton(self.button, text = 'x²', font = self.font, width = 75.25, height = 50, command = lambda:self.getSquare())
+        self.button_Square.place(x = 83.5, y = 81)
+        self.button_SquareRoot = customtkinter.CTkButton(self.button, text = '√x', font = self.font, width = 75.25, height = 50, command = lambda:self.getSquareRoot())
+        self.button_SquareRoot.place(x = 162.4, y = 81)
+        self.button_Division = customtkinter.CTkButton(self.button, text = '÷', font = ('Consolas', 20), width = 75.25, height = 50, command = lambda:self.accept('/'))
+        self.button_Division.place(x = 240, y = 81)
 
-        self.button_7 = customtkinter.CTkButton(self.button, text = '7',  text_font = self.font, command = lambda:self.accept(7))
-        self.button_7.place(x = 5.5, y = 134, width = 75.25, height = 50)
-        self.button_8 = customtkinter.CTkButton(self.button, text = '8',  text_font = self.font, command = lambda:self.accept(8))
-        self.button_8.place(x = 83.5, y = 134, width = 75.25, height = 50)
-        self.button_9 = customtkinter.CTkButton(self.button, text = '9',  text_font = self.font, command = lambda:self.accept(9))
-        self.button_9.place(x = 162.4, y = 134, width = 75.25, height = 50)
-        self.button_Multiplication = customtkinter.CTkButton(self.button, text = '❌', text_font = ('Consolas',8), command = lambda:self.accept('*'))
-        self.button_Multiplication.place(x = 240, y = 134, width = 75.25, height = 50)
+        self.button_7 = customtkinter.CTkButton(self.button, text = '7',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept(7))
+        self.button_7.place(x = 5.5, y = 134)
+        self.button_8 = customtkinter.CTkButton(self.button, text = '8',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept(8))
+        self.button_8.place(x = 83.5, y = 134)
+        self.button_9 = customtkinter.CTkButton(self.button, text = '9',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept(9))
+        self.button_9.place(x = 162.4, y = 134)
+        self.button_Multiplication = customtkinter.CTkButton(self.button, text = '❌', font = ('Consolas',8), width = 75.25, height = 50, command = lambda:self.accept('*'))
+        self.button_Multiplication.place(x = 240, y = 134)
 
-        self.button_4 = customtkinter.CTkButton(self.button, text = '4',  text_font = self.font, command = lambda:self.accept(4))
-        self.button_4.place(x = 5.5, y = 187, width = 75.25, height = 50)
-        self.button_5 = customtkinter.CTkButton(self.button, text = '5',  text_font = self.font, command = lambda:self.accept(5))
-        self.button_5.place(x = 83.5, y = 187, width = 75.25, height = 50)
-        self.button_6 = customtkinter.CTkButton(self.button, text = '6',  text_font = self.font, command = lambda:self.accept(6))
-        self.button_6.place(x = 162.4, y = 187, width = 75.25, height = 50)
-        self.button_Substraction = customtkinter.CTkButton(self.button, text = '-', text_font = ('Consolas', 20), command = lambda:self.accept('-'))
-        self.button_Substraction.place(x = 240, y = 187, width = 75.25, height = 50)
+        self.button_4 = customtkinter.CTkButton(self.button, text = '4',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept(4))
+        self.button_4.place(x = 5.5, y = 187)
+        self.button_5 = customtkinter.CTkButton(self.button, text = '5',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept(5))
+        self.button_5.place(x = 83.5, y = 187)
+        self.button_6 = customtkinter.CTkButton(self.button, text = '6',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept(6))
+        self.button_6.place(x = 162.4, y = 187)
+        self.button_Substraction = customtkinter.CTkButton(self.button, text = '-', font = ('Consolas', 20), width = 75.25, height = 50, command = lambda:self.accept('-'))
+        self.button_Substraction.place(x = 240, y = 187)
 
-        self.button_1 = customtkinter.CTkButton(self.button, text = '1', text_font = self.font, command = lambda:self.accept(1))
-        self.button_1.place(x = 5.5, y = 240, width = 75.25, height = 50)
-        self.button_2 = customtkinter.CTkButton(self.button, text = '2', text_font = self.font, command = lambda:self.accept(2))
-        self.button_2.place(x = 83.5, y = 240, width = 75.25, height = 50)
-        self.button_3 = customtkinter.CTkButton(self.button, text = '3', text_font = self.font, command = lambda:self.accept(3))
-        self.button_3.place(x = 162.4, y = 240, width = 75.25, height = 50)
-        self.button_Addition = customtkinter.CTkButton(self.button, text = '+', text_font = ('Consolas', 20), command = lambda:self.accept('+'))
-        self.button_Addition.place(x = 240, y = 240, width = 75.25, height = 50)
+        self.button_1 = customtkinter.CTkButton(self.button, text = '1', font = self.font, width = 75.25, height = 50, command = lambda:self.accept(1))
+        self.button_1.place(x = 5.5, y = 240)
+        self.button_2 = customtkinter.CTkButton(self.button, text = '2', font = self.font, width = 75.25, height = 50, command = lambda:self.accept(2))
+        self.button_2.place(x = 83.5, y = 240)
+        self.button_3 = customtkinter.CTkButton(self.button, text = '3', font = self.font, width = 75.25, height = 50, command = lambda:self.accept(3))
+        self.button_3.place(x = 162.4, y = 240)
+        self.button_Addition = customtkinter.CTkButton(self.button, text = '+', font = ('Consolas', 20), width = 75.25, height = 50, command = lambda:self.accept('+'))
+        self.button_Addition.place(x = 240, y = 240)
 
-        self.button_PointRight = customtkinter.CTkButton(self.button, text = '.>',  text_font = self.font, command = lambda:self.movePointRight())
-        self.button_PointRight.place(x = 5.5, y = 293, width = 75.25, height = 50)
-        self.button_0 = customtkinter.CTkButton(self.button, text = '0',  text_font = self.font, command = lambda:self.accept(0))
-        self.button_0.place(x = 83.5, y = 293, width = 75.25, height = 50)
-        self.button_Point = customtkinter.CTkButton(self.button, text = '.',  text_font = self.font, command = lambda:self.accept('.'))
-        self.button_Point.place(x = 162.4, y = 293, width = 75.25, height = 50)
-        self.button_Result = customtkinter.CTkButton(self.button, text = '=', text_font = ('Consolas', 20,'bold'), command = lambda:self.math('='))
-        self.button_Result.place(x = 240, y = 293, width = 75.25, height = 50)
+        self.button_PointRight = customtkinter.CTkButton(self.button, text = '.>',  font = self.font, width = 75.25, height = 50, command = lambda:self.movePointRight())
+        self.button_PointRight.place(x = 5.5, y = 293)
+        self.button_0 = customtkinter.CTkButton(self.button, text = '0',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept(0))
+        self.button_0.place(x = 83.5, y = 293)
+        self.button_Point = customtkinter.CTkButton(self.button, text = '.',  font = self.font, width = 75.25, height = 50, command = lambda:self.accept('.'))
+        self.button_Point.place(x = 162.4, y = 293)
+        self.button_Result = customtkinter.CTkButton(self.button, text = '=', font = ('Consolas', 20,'bold'), width = 75.25, height = 50, command = lambda:self.math('='))
+        self.button_Result.place(x = 240, y = 293)
         
-        
-        self.historyButton = customtkinter.CTkButton(self.window, text = '🕒', text_font = ('Consolas', 16), command = self.displayHistory)
+        self.historyButton = customtkinter.CTkButton(self.window, text= '🕒', font = ('Consolas', 16), width = 50, height = 50,command = self.displayHistory)
         self.historyButton.configure(
             bg_color = self.accent_color_1,
             fg_color = self.accent_color_1,
@@ -139,7 +138,7 @@ class Calculator():
             hover_color = self.accent_color_7,
             corner_radius = 8
         )
-        self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
+        self.historyButton.place(x = 5, y = 5)
         self.hover(self.historyButton, self.accent_color_4, self.accent_color_3)
         self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
 
@@ -211,8 +210,8 @@ class Calculator():
     
     
     def hover(self, btn, colorfgOnHover, colorfgOnLeave):
-        btn.bind("<Enter>", func = lambda i: btn.configure(text_color = colorfgOnHover))
-        btn.bind("<Leave>", func = lambda i: btn.configure(text_color = colorfgOnLeave))
+        btn.bind("<Enter>", btn.configure(text_color = colorfgOnHover))
+        btn.bind("<Leave>", btn.configure(text_color = colorfgOnLeave))
         
         
         
@@ -232,16 +231,16 @@ class Calculator():
 
     def displayHistory(self):
         # add history area
-        self.historyLabel = Label(self.window, text = '', bg = self.accent_color_1, fg = self.accent_color_2)
-        self.historyLog = Message(self.historyLabel, text = '', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, width = 200)
-        self.historyLabel.place(y = 60, width = 323, height = 450)
-        self.historyLog.place(x = 12, y = 0)
+        self.historyLabel = Label(self.window, text = '', width = 323, height = 450, bg = self.accent_color_1, fg = self.accent_color_2)
+        self.historyLog = Message(self.historyLabel, text = '', bg = self.accent_color_1, fg = self.accent_color_2, font = ('Consolas', 20), width = 500)
+        self.historyLabel.place(y = 100)
+        self.historyLog.place(x = 12, y = 16)
         self.historyLog['text'] = ('\n'.join(i for i in self.history))
         self.historyButton['bg'] = self.accent_color_1
         self.tip_history.destroy()
         
         # add close history button
-        self.button_CloseHistory = customtkinter.CTkButton(self.window, text = 'x', text_font = self.font, command = self.closeHistory)
+        self.button_CloseHistory = customtkinter.CTkButton(self.window, text = 'x', font = self.font, width = 50, height = 50, command = self.closeHistory)
         self.button_CloseHistory.configure(
             bg_color = self.accent_color_1,
             fg_color = self.accent_color_1,
@@ -250,31 +249,31 @@ class Calculator():
             corner_radius = 8
         )
         self.hover(self.button_CloseHistory, self.accent_color_4, self.accent_color_3)
-        self.button_CloseHistory.place(x = 260, y = 5, width = 50, height = 50)
+        self.button_CloseHistory.place(x = 260, y = 5)
 
         # copy history
-        self.button_CopyHistory = customtkinter.CTkButton(self.window, text = '📑\ncopy', text_font = ('Consolas', 10), command = self.copyHistory)
-        self.button_CopyHistory.place(x = 5, y = 5, width = 50, height = 50)
+        self.button_CopyHistory = customtkinter.CTkButton(self.window, text = '📑\ncopy', font = ('Consolas', 12), width = 50, height = 50, command = self.copyHistory)
+        self.button_CopyHistory.place(x = 5, y = 5)
         
 
         # save history to .txt file
-        self.button_saveToTXT = customtkinter.CTkButton(self.window, text = '💾\ntxt', text_font = ('Consolas', 10), command = self.saveToTXT)
-        self.button_saveToTXT.place(x = 55, y = 5, width = 50, height = 50)
+        self.button_saveToTXT = customtkinter.CTkButton(self.window, text = '💾\ntxt', font = ('Consolas', 12), width = 50, height = 50, command = self.saveToTXT)
+        self.button_saveToTXT.place(x = 55, y = 5)
         
 
         # save history to .json file
-        self.button_saveToJSON = customtkinter.CTkButton(self.window, text = '💾\njson', text_font = ('Consolas', 10), command = self.saveToJSON)
-        self.button_saveToJSON.place(x = 105, y = 5, width = 50, height = 50)
+        self.button_saveToJSON = customtkinter.CTkButton(self.window, text = '💾\njson', font = ('Consolas', 12), width = 50, height = 50, command = self.saveToJSON)
+        self.button_saveToJSON.place(x = 105, y = 5)
         
 
         # save history to .csv file
-        self.button_saveToCSV = customtkinter.CTkButton(self.window, text = '💾\ncsv', text_font = ('Consolas', 10), command = self.saveToCSV)
-        self.button_saveToCSV.place(x = 155, y = 5, width = 50, height = 50)
+        self.button_saveToCSV = customtkinter.CTkButton(self.window, text = '💾\ncsv', font = ('Consolas', 12), width = 50, height = 50, command = self.saveToCSV)
+        self.button_saveToCSV.place(x = 155, y = 5)
         
 
         # clean history
-        self.button_CleanHistory = customtkinter.CTkButton(self.window, text = '🧽\nclean', text_font = ('Consolas', 10), command = self.cleanHistory)
-        self.button_CleanHistory.place(x = 205, y = 5, width = 50, height = 50)
+        self.button_CleanHistory = customtkinter.CTkButton(self.window, text = '🧽\nclean', font = ('Consolas', 12), width = 50, height = 50, command = self.cleanHistory)
+        self.button_CleanHistory.place(x = 205, y = 5)
         
 
         for i in (self.button_CopyHistory, self.button_CleanHistory, self.button_saveToCSV, self.button_saveToJSON, self.button_saveToTXT):
@@ -303,7 +302,7 @@ class Calculator():
     def closeHistory(self):
         for i in (self.historyLabel,self.historyLog,self.button_CloseHistory,self.button_CleanHistory,self.button_CopyHistory,self.button_saveToCSV,self.button_saveToTXT,self.button_saveToJSON,self.tip_clean_history,self.tip_close_history,self.tip_copy_history_csv,self.tip_copy_history_json,self.tip_copy_history_txt):
             i.destroy()
-        self.historyButton = customtkinter.CTkButton(self.window, text = '🕒', text_font = ('Consolas', 16), command = self.displayHistory)
+        self.historyButton = customtkinter.CTkButton(self.window, text = '🕒', font = ('Consolas', 16), width = 50, height = 50, command = self.displayHistory)
         self.historyButton.configure(
             bg_color = self.accent_color_1,
             fg_color = self.accent_color_1,
@@ -312,7 +311,7 @@ class Calculator():
             corner_radius = 5
         )
         self.hover(self.historyButton, self.accent_color_4, self.accent_color_3)
-        self.historyButton.place(x = 5, y = 5, width = 50, height = 50)
+        self.historyButton.place(x = 5, y = 5)
         self.tip_history = ToolTip(self.historyButton, msg = 'History', parent_kwargs={"bg": self.accent_color_4, "padx": 1, "pady": 1}, fg=self.accent_color_3, bg=self.accent_color_7, pady = 5, delay = 1)
 
 
