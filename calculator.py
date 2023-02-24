@@ -48,14 +48,14 @@ class Calculator():
         self.logArea = Label(self.window, text='',
                              bg=self.accent_color_1, width=295, height=45)
         self.logArea.place(x=5, y=60)
-        self.logAreaMessage = Message(self.logArea, width=500, textvariable=self.log,
+        self.logAreaMessage = Message(self.logArea, width=600, textvariable=self.log,
                                       bg=self.accent_color_1, fg=self.accent_color_4, font=('Consolas', 20))
         self.logAreaMessage.place(x=7, y=55)
 
         self.displayArea = Label(self.window, text='',
-                                 bg=self.accent_color_1, width=300, height=50)
+                                 bg=self.accent_color_1, width=600, height=50)
         self.displayArea.place(x=5, y=170)
-        self.displayAreaMessage = Message(self.displayArea, width=300, textvariable=self.val,
+        self.displayAreaMessage = Message(self.displayArea, width=600, textvariable=self.val,
                                           bg=self.accent_color_1, fg=self.accent_color_3, font=('Consolas', 36, 'bold'))
         self.displayAreaMessage.place(x=-1, y=10)
 
@@ -243,7 +243,7 @@ class Calculator():
     def accept(self, i):
         if self.str == '0' and i == 0:
             self.reset()
-        elif len(self.str) > 16:
+        elif len(self.str) > 20:
             self.reset()
         else:
             self.display(i)
@@ -412,7 +412,7 @@ class Calculator():
             self.log.set('0')
 
     def movePointRight(self):
-        if self.val.get() != '0' and len(self.str) < 16:
+        if self.val.get() != '0' and len(self.str) < 20:
             try:
                 moveRight = round(int(self.val.get()) * 10, 10)
                 self.str = (str(moveRight))
@@ -428,7 +428,7 @@ class Calculator():
             self.reset()
 
     def movePointLeft(self):
-        if self.val.get() != '0' and len(self.str) < 16:
+        if self.val.get() != '0' and len(self.str) < 20:
             try:
                 moveLeft = round(int(self.val.get()) / 10, 10)
                 self.str = (str(moveLeft))
