@@ -62,26 +62,6 @@ class Calculator():
         self.button = Label(self.window, text='',
                             bg=self.accent_color_1, width=323, height=355)
         self.button.place(x=-4, y=245)
-
-        # button_MC = Button(self.button, text = 'MC', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MC'))
-        # button_MC.place(x = 5, y = -3, width = 49, height = 25)
-        # button_MC['relief'] = 'flat'
-        # button_MR = Button(self.button, text = 'MR', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MR'))
-        # button_MR.place(x = 57, y = -3, width = 49, height = 25)
-        # button_MR['relief'] = 'flat'
-        # button_MRP = Button(self.button, text = 'MR+', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MR+'))
-        # button_MRP.place(x = 109, y = -3, width = 49, height = 25)
-        # button_MRP['relief'] = 'flat'
-        # button_MRN = Button(self.button, text = 'MR-', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MR-'))
-        # button_MRN.place(x = 162, y = -3, width = 49, height = 25)
-        # button_MRN['relief'] = 'flat'
-        # button_MS = Button(self.button, text = 'MS', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('MS'))
-        # button_MS.place(x = 215, y = -3, width = 49, height = 25)
-        # button_MS['relief'] = 'flat'
-        # button_MM = Button(self.button, text = 'M▼', bg = self.accent_color_1, fg = self.accent_color_2, font = self.font, command = lambda:self.accept('M▼'))
-        # button_MM.place(x = 266, y = -3, width = 49, height = 25)
-        # button_MM['relief'] = 'flat'
-
         self.button_Remove = customtkinter.CTkButton(self.button, text='⌫', font=(
             'Consolas', 14), width=75.25, height=50, command=lambda: self.eraseLastChar())
         self.button_Remove.place(x=5.5, y=28)
