@@ -17,7 +17,7 @@ root.title('Calculator')
 x = int(root.winfo_screenwidth() // 2)
 y = int(root.winfo_screenheight() * 0.2)
 x, y = str(x), str(y)
-root.geometry(f'320x473+{x}+{y}')
+root.geometry(f'320x490+{x}+{y}')
 # root.attributes('-alpha', 0.95)
 root.resizable(False, False)
 root.iconbitmap('assets\\logo.ico')
@@ -223,7 +223,7 @@ class Calculator():
     def accept(self, i):
         if self.str == '0' and i == 0:
             self.reset()
-        elif len(self.str) > 20:
+        elif len(self.str) > 18:
             self.reset()
         else:
             self.display(i)
@@ -392,7 +392,7 @@ class Calculator():
             self.log.set('0')
 
     def movePointRight(self):
-        if self.val.get() != '0' and len(self.str) < 20:
+        if self.val.get() != '0' and len(self.str) < 18:
             try:
                 moveRight = round(int(self.val.get()) * 10, 10)
                 self.str = (str(moveRight))
@@ -408,7 +408,7 @@ class Calculator():
             self.reset()
 
     def movePointLeft(self):
-        if self.val.get() != '0' and len(self.str) < 20:
+        if self.val.get() != '0' and len(self.str) < 18:
             try:
                 moveLeft = round(int(self.val.get()) / 10, 10)
                 self.str = (str(moveLeft))
