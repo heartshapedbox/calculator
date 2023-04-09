@@ -7,7 +7,7 @@ import json
 import csv
 import math
 import os
-os.chdir('C:\\Users\\Dima\\Documents\\GitHub\\calculator\\')
+os.chdir('C:\\Users\\Dmitry\\Documents\\GitHub\\calculator\\')
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme('dark-blue')
 
